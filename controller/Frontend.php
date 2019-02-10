@@ -1,12 +1,14 @@
 <?php
 
 require_once('./model/ArticleManager.php');
+require_once('./model/CommentManager.php');
 
-function listArticles() {
+function frontPage() {
 	$articleManager = new ArticleManager();
 	$articles = $articleManager->getArticles();
-
-	require_once('./view/frontend/listArticlesView.php');
+	$commentManager = new CommentManager();
+	$lastComments = $commentManager->getLastComments();
+	require_once('./view/frontend/homeView.php');
 }
 
 function article() {

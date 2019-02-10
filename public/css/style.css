@@ -1,0 +1,86 @@
+/*###############
+#####General#####
+###############*/
+
+body, html {
+	height:100%;
+	width:100%;
+}
+
+@font-face {
+    font-family: 'ostrich_sansmedium';
+    src: url('../assets/fonts/ostrich-regular-webfont.woff2') format('woff2'),
+         url('../assets/fonts/ostrich-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'vinchandregular';
+    src: url('../assets/fonts/vinchand-webfont.woff2') format('woff2'),
+         url('../assets/fonts/vinchand-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.left-page {
+}
+
+.right-page {
+	border-left: 1px solid lightgrey;
+}
+
+.top-header {
+	width: 85%!important;
+	margin: 0 auto!important;
+}
+
+.top-header h1 {
+	margin:.8vw!important;
+	width: 100%!important;
+	text-align: center!important;
+	font-family: 'ostrich_sansmedium', Arial!important;
+	font-size: 1vw!important;
+}
+
+.neutral-xl-title {
+	font-family: Arial Black;
+	font-size: 1.8vw;
+}
+
+.neutral-md-title {
+	font-family: Arial Black;
+	font-size: 1.2vw;
+}
+
+.small {
+	font-size: .8vw;
+}
+
+/*#################
+#####Main Page#####
+#################*/
+
+#chapter-list h2 {
+	font-family: 'ostrich_sansmedium', Arial;
+}
+
+#chapter-list a, #chapter-list a:visited, #chapter-list a:active, #chapter-list a:link {
+	color:black;
+	transition: all .5s ease;
+}
+
+#chapter-list a:hover {
+	text-decoration: none;
+	color:grey;
+}
+
+#last-comments a, #last-comments a:visited, #last-comments a:active, #last-comments a:link {
+	color:black;
+	transition: all .5s ease;
+}
+
+#last-comments a:hover {
+	text-decoration: none;
+	color:grey;
+}

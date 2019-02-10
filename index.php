@@ -15,8 +15,8 @@ try {
 	}
 
 	else if (isset($_GET['action'])) {
-		if ($_GET['action'] == 'listArticles') {
-			listArticles();
+		if ($_GET['action'] == 'home') {
+			frontPage();
 		}
 		else if ($_GET['action'] == 'article') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -29,7 +29,7 @@ try {
 	}
 
 	else {
-		listArticles();
+		frontPage();
 	}
 }
 
