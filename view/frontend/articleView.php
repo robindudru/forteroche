@@ -1,13 +1,12 @@
-<?php $title = $article['title']; ?>
-
+<?php $title = $article->getValue('title'); ?>
 
 
 <h1>
-    <?= htmlspecialchars($article['title']) ?>
+    <?= $article->getValue('title'); ?>
 </h1>
 
 <p>
-	<?= $article['content'] ?>
+	<?= $article->getValue('content'); ?>
 </p>
 
 <a href='index.php'>Retour</a>

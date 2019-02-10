@@ -1,31 +1,29 @@
 <?php
 
-require_once('./model/ArticleManager.php');
-require_once('./model/CommentManager.php');
+require_once('Common.php');
 
-function frontPage() {
-	$articleManager = new ArticleManager();
-	$articles = $articleManager->getArticles();
-	$commentManager = new CommentManager();
-	$lastComments = $commentManager->getLastComments();
-	require_once('./view/frontend/homeView.php');
-}
+class Frontend extends Common {
 
-function article() {
-	$articleManager = new ArticleManager();
-	$article = $articleManager->getArticle($_GET['id']);
-
-	require_once('./view/frontend/articleView.php');
-}
-
-function addComment($author, $comment, $articleId) {
-	$commentManager = new CommentManager();
-	$affectedLines = $commentManager->postComment($author, $comment, $articleId);
-
-	if($affectedLines === false) {
-		throw new Exception('Impossible d\'ajouter ce commentaire.');
+	public function frontPage() {
+		$articles = $this->articleManager->getArticles();
+		$articlesArray = $this->articleManager->getValue('array');
+		$comments = $this->commentManager->getLastComments();
+		$commentsArray = $this->commentManager->getValue('array');
+		require_once('./view/frontend/homeView.php');
 	}
-	else {
-		header('Location: index.php?action=post&id=' . $articleId);
+
+	public function article() {
+		$article = $this->articleManager->getArticle($_GET['id']);
+		require_once('./view/frontend/articleView.php');
+	}
+
+	public function addComment($author, $comment, $articleId) {
+		$affectedLines = $this->commentManager->postComment($author, $comment, $articleId);
+		if($affectedLines === false) {
+			throw new Exception('Impossible d\'ajouter ce commentaire.');
+		}
+		else {
+			header('Location: index.php?action=post&id=' . $articleId);
+		}
 	}
 }

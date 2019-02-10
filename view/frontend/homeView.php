@@ -5,12 +5,11 @@ $pageTitle = 'TABLE DES MATIERES'; ?>
 	<nav id="chapter-list">
 		<span class="neutral-xl-title">Table des matières</span><br /><br />
 		<?php 
-		while ($data = $articles->fetch()){
+		foreach ($articlesArray as $article){
 		?>
-			<h2><a href="index.php?action=article&id=<?= $data['id'] ?>"><?= htmlspecialchars($data['title']) ?></a></h2>
+			<h2><a href="index.php?action=article&id=<?= $article->getValue('id') ?>"><?= htmlspecialchars($article->getValue('title')) ?></a></h2>
 		<?php
 		}
-		$articles->closeCursor();
 		?>
 	</nav>
 <?php $contentLeft = ob_get_clean();
@@ -19,26 +18,24 @@ ob_start(); ?>
 	<div id="last-comments" class="fluid-container no-gutters">
 		<div class="row no-gutters">
 			<?php 
-			while ($data = $lastComments->fetch()){
-			$fetchTitle = $commentManager->getArticleTitle($data['article_id']);
-			$articleTitle = $fetchTitle->fetch();
+			foreach ($commentsArray as $comment){
+				$articleId = $comment->getValue('articleId');
 			?>
 				<div class="col-6 mt-4">
 					<div class="card mr-4">
 						<div class="card-header d-flex justify-content-between">
-							<?= $data['author'] ?>
+							<?= $comment->getValue('author') ?>
 							<span class="card-subtitle text-muted small">
-								<a href="index.php?action=article&id=<?= $data['article_id'] ?>"><?= $articleTitle['title']?></a>
+								<a href="index.php?action=article&id=<?= $comment->getValue('articleId') ?>">TITRE</a>
 							</span>
 						</div>
 						<div class="card-body">
-							<p class="card-text"><?php echo substr($data['content'], 0, 200); if (strlen($data['content']) > 200) { echo '...';} ?></p>
+							<p class="card-text"><?php echo substr($comment->getValue('content'), 0, 200); if (strlen($comment->getValue('content')) > 200) { echo '...';} ?></p>
 						</div>
 					</div>
 				</div>
 			<?php
 			}
-			$articles->closeCursor();
 			?>
 		</div>
 	</div>
