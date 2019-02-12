@@ -9,6 +9,7 @@ class Frontend extends Common {
 		$articlesArray = $this->articleManager->getValue('array');
 		$comments = $this->commentManager->getLastComments();
 		$commentsArray = $this->commentManager->getValue('array');
+		$this->commentManager->getArticleTitle($commentsArray);
 		require_once('./view/frontend/homeView.php');
 	}
 

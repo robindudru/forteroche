@@ -26,7 +26,7 @@ ob_start(); ?>
 						<div class="card-header d-flex justify-content-between">
 							<?= $comment->getValue('author') ?>
 							<span class="card-subtitle text-muted small">
-								<a href="index.php?action=article&id=<?= $comment->getValue('articleId') ?>">TITRE</a>
+								<a href="index.php?action=article&id=<?= $comment->getValue('articleId') ?>"><?= $comment->getValue('articleTitle') ?></a>
 							</span>
 						</div>
 						<div class="card-body">

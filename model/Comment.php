@@ -5,6 +5,7 @@ class Comment{
 	private $author;
 	private $content;
 	private $articleId;
+	private $articleTitle;
 
 	public function __construct($id, $author, $content, $articleId) {
 		$this->id = $id;
@@ -26,5 +27,12 @@ class Comment{
 		if ($property == 'articleId') {
 			return $this->articleId;
 		}
+		if ($property == 'articleTitle') {
+			return $this->articleTitle;
+		}
+	}
+
+	public function setArticleTitle($value) {
+		$this->articleTitle = $value;
 	}
 }

@@ -2,6 +2,7 @@
 
 require_once('Manager.php');
 require_once('Comment.php');
+require_once('ArticleManager.php');
 
 class CommentManager extends Manager {
 	private $lastCommentsArray;
@@ -15,6 +16,15 @@ class CommentManager extends Manager {
 			array_push($this->lastCommentsArray, $comment);
 		};
 		$req->closeCursor();
+	}
+
+	public function getArticleTitle($commentsArray) {
+		$articleManager = new ArticleManager();
+		foreach($commentsArray as $comment) {
+			$article = $articleManager->getArticle($comment->getValue('articleId'));
+			$articleTitle = $article->getValue('title');
+			$comment->setArticleTitle($articleTitle);
+		}
 	}
 
 	public function getValue($property) {

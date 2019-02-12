@@ -38,23 +38,28 @@ class ArticleManager extends Manager {
 	}
 
 	public function add() {
-		$values = [
-			'title' => htmlspecialchars($_POST['title']),
-			'content' => htmlspecialchars($_POST['content'])
-		];
-		$db = $this->dbConnect();
-		$req = $db->prepare('INSERT INTO articles (title, content) VALUES (:title, :content)');
-		if (!$req->execute($values)) {
-			throw new Exception ('Erreur lors de l\'ajout de l\'article');
+		if (!empty($_POST['title']) && !empty($_POST['content'])) {
+			$values = [
+				'title' => $_POST['title'],
+				'content' => $_POST['content']
+			];
+			$db = $this->dbConnect();
+			$req = $db->prepare('INSERT INTO articles (title, content) VALUES (:title, :content)');
+			if (!$req->execute($values)) {
+				throw new Exception('Erreur lors de l\'ajout de l\'article');
+			}
+		}
+		else {
+			throw new Exception('Un ou plusieurs champs sont vides.');
 		}
 	}
 
 	public function edit() {
 		$values = [
-			'title' => htmlspecialchars($_POST['title']),
-			'content' => htmlspecialchars($_POST['content']),
+			'title' => $_POST['title'],
+			'content' => $_POST['content'],
 			'now' => date("Y-m-d H:i:s"),
-			'id' => htmlspecialchars($_GET['id'])
+			'id' => intval($_GET['id'])
 		];
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now WHERE id=:id');
@@ -64,7 +69,7 @@ class ArticleManager extends Manager {
 	}
 
 	public function delete() {
-		$articleId = $_GET['id'];
+		$articleId = intval($_GET['id']);
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM articles WHERE id = ?');
 		if (!$req->execute(array($articleId))) {

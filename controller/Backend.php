@@ -21,7 +21,7 @@ class Backend extends Common {
 
 	public function disconnect() {
 		session_destroy();
-		$this->login();
+		header('Location:index.php?mode=admin&action=login');
 	}
 
 	public function adminHome() {
