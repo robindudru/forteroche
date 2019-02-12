@@ -9,7 +9,7 @@ class ArticleManager extends Manager {
 	public function getArticles() {
 		$this->articlesArray = [];
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT * FROM articles');
+		$req = $db->query('SELECT * FROM articles ORDER BY id');
 		while ($data = $req->fetch()){
 			$article = new Article($data['id'], $data['title'], $data['content'], $data['date']);
 			array_push($this->articlesArray, $article);
@@ -53,10 +53,11 @@ class ArticleManager extends Manager {
 		$values = [
 			'title' => htmlspecialchars($_POST['title']),
 			'content' => htmlspecialchars($_POST['content']),
+			'now' => date("Y-m-d H:i:s"),
 			'id' => htmlspecialchars($_GET['id'])
 		];
 		$db = $this->dbConnect();
-		$req = $db->prepare('UPDATE articles SET title=:title, content=:content WHERE id=:id');
+		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now WHERE id=:id');
 		if (!$req->execute($values)) {
 			throw new Exception ('Erreur lors de l\'édition de l\'article');
 		}

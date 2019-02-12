@@ -4,6 +4,26 @@ require_once('Common.php');
 
 class Backend extends Common {
 
+	public function login() {
+		if  ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$login = $this->userManager->login();
+			if ($login) {
+				$this->adminHome();
+			}
+			else {
+				require_once('./view/backend/loginView.php');
+			}
+		}
+		else {
+			require_once('./view/backend/loginView.php');
+		}
+	}
+
+	public function disconnect() {
+		session_destroy();
+		$this->login();
+	}
+
 	public function adminHome() {
 		$articles = $this->articleManager->getArticles();
 		$articlesArray = $this->articleManager->getValue('array');

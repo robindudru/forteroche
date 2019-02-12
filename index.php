@@ -9,22 +9,39 @@ $backController = new Backend();
 try {
 	if (isset($_GET['mode'])) {
 		if ($_GET['mode'] == 'admin') {
-			if (isset($_GET['action'])) {
-				if ($_GET['action'] == 'addArticle') {
-					$backController->addArticle();
-				}
-				else if ($_GET['action'] == 'editArticle') {
-					$backController->editArticle();
-				}
-				else if ($_GET['action'] == 'deleteArticle') {
-					$backController->deleteArticle();
+			session_start();
+			if (isset($_SESSION['username'])) {
+				if ($_SESSION['role'] == 'admin') {
+					if (isset($_GET['action'])) {
+						if ($_GET['action'] == 'addArticle') {
+							$backController->addArticle();
+						}
+						else if ($_GET['action'] == 'editArticle') {
+							$backController->editArticle();
+						}
+						else if ($_GET['action'] == 'deleteArticle') {
+							$backController->deleteArticle();
+						}
+						else if ($_GET['action'] == 'login') {
+							$backController->login();
+						}
+						else if ($_GET['action'] == 'disconnect') {
+							$backController->disconnect();
+						}
+						else {
+							throw new Exception('Action inconnue');
+						}
+					}
+					else {
+						$backController->adminHome();	
+					}
 				}
 				else {
-					throw new Exception('Action inconnue');
+					throw new Exception('Vous n\'êtes pas administrateur !');
 				}
 			}
 			else {
-				$backController->adminHome();	
+				$backController->login();
 			}
 		}
 		else {

@@ -8,4 +8,5 @@
 
 <a href="?mode=admin&action=addArticle">Ajouter un article</a>
 <br />
-<a href="?mode=admin">Retour</a>
+<a href="?mode=admin">Retour</a><br />
+<a href="?mode=admin&action=disconnect">Déconnexion</a>
