@@ -5,7 +5,6 @@
 body, html {
 	height:100%;
 	width:100%;
-	overflow: hidden;
 }
 
 @font-face {
@@ -85,21 +84,69 @@ a:hover {
 }
 
 /*#################
-#####Main Page#####
-######Frontend#####
+#####Admin Main####
+#######Template####
 #################*/
 
-#chapter-list h2 {
-	font-family: 'ostrich_sansmedium', Arial;
-	float:left;
-	margin: 0 5px 0 0;
-}
-#chapter-list-filler {
-	border-bottom:2px dotted black;
-	overflow:hidden;
+#admin-nav {
+	color: white;
+	height:8vh;
+	background-color: #262626;
 }
 
-#chapter-list a:hover {
-	text-decoration: none;
-	color:grey;
+#admin-nav img {
+	height: 7vh;
+}
+
+#admin-links a {
+	font-size: 2rem!important;
+}
+
+#admin-links i {
+	font-size: 1.5rem!important;
+	transition: 1s all ease;
+	transform-origin: 50% 50%;
+}
+
+#admin-nav a {
+	font-family: 'ostrich_sansmedium', Arial;
+	color:white;
+	font-size: 1.3rem;
+}
+
+.username {
+	font-weight: bold;
+	font-size: 1.3rem;
+}
+
+/*#################
+#####Main Page#####
+#######Backend#####
+#################*/
+
+.admin-section-title {
+	font-family: 'ostrich_sansmedium', Arial;
+	font-size:2.5rem;
+}
+
+.admin-card-title {
+	font-family: 'ostrich_sansmedium', Arial;
+	font-size: 1.8rem;
+}
+
+#login-form {
+	width:70%;
+	margin: 0 auto;
+}
+
+#login-form button {
+	margin:0 auto;
+}
+
+.article-form {
+	width:100%;
+}
+
+#tinymce {
+	height:60vh;
 }

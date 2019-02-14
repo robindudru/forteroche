@@ -16,9 +16,9 @@ ob_start();
 							<span class="admin-card-title">
 								<a href="?mode=admin&action=editArticle&id=<?= $article->getValue('id') ?>">
 									<?php
-									$title= htmlspecialchars($article->getValue('title'));
-									echo substr($title, 0, 50);
-									if(strlen($title) > 50) echo '...';
+									$articleTitle= htmlspecialchars($article->getValue('title'));
+									echo substr($articleTitle, 0, 50);
+									if(strlen($articleTitle) > 50) echo '...';
 									?>										
 								</a>
 							</span>

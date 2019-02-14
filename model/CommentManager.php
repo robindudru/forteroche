@@ -23,7 +23,7 @@ class CommentManager extends Manager {
 		foreach($commentsArray as $comment) {
 			$article = $articleManager->getArticle($comment->getValue('articleId'));
 			$articleTitle = $article->getValue('title');
-			$comment->setArticleTitle($articleTitle);
+			$comment->setValue('articleTitle', $articleTitle);
 		}
 	}
 
@@ -31,5 +31,11 @@ class CommentManager extends Manager {
 		if ($property == 'array') {
 			return $this->lastCommentsArray;
 		}
+	}
+
+	public function totalComments($articleId) {
+		$db = $this->dbConnect();
+		$req = $db->query("SELECT COUNT(id) FROM comments WHERE article_id = '$articleId'")->fetchColumn(); 
+		return $req;
 	}
 }

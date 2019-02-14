@@ -6,7 +6,7 @@
 		<title><?= $title ?></title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<link rel="stylesheet" href="./public/css/style.css">
+		<link rel="stylesheet" href="./public/css/admin_style.css">
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=uhyykhime2vq6i59wnrvg33bjmuadk82qs7rw0jfiu26a5hm"></script>
 		<script>
   			tinymce.init({
@@ -23,7 +23,10 @@
 					if(isset($_SESSION['username'])) {
 					?>
 						<div class="mx-3"><a href="?mode=admin">Accueil</a></div>
-						<div class="mx-3"><a href="?mode=admin&action=addArticle">Ajouter un article</a></div>
+						<div class="mx-3">
+							<a href="?mode=admin&action=addArticle">Ajouter un article
+								<i class="fas fa-plus-circle pl-2 pb-3"></i></a>
+						</div>
 						<div class="mx-5"><a target="_blank" href="index.php">Voir le site</a></div>
 					<?php
 					}

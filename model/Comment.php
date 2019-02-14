@@ -8,10 +8,10 @@ class Comment{
 	private $articleTitle;
 
 	public function __construct($id, $author, $content, $articleId) {
-		$this->id = $id;
-		$this->author = $author;
-		$this->content = $content;
-		$this->articleId = $articleId;
+		$this->setValue('id', $id);
+		$this->setValue('author', $author);
+		$this->setValue('content', $content);
+		$this->setValue('articleId', $articleId);
 	}
 
 	public function getValue($property) {
@@ -32,7 +32,35 @@ class Comment{
 		}
 	}
 
-	public function setArticleTitle($value) {
-		$this->articleTitle = $value;
+	public function setValue($property, $value) {
+		switch ($property) {
+			case 'id':
+				$value = (int)$value;
+				if ($value > 0) {
+					$this->id = $value;
+				}
+				break;
+			case 'author':
+				if (is_string($value)) {
+					$this->author = $value;
+				}
+				break;
+			case 'content':
+				if (is_string($value)) {
+					$this->content = $value;
+				}
+				break;
+			case 'articleId':
+				$value = (int)$value;
+				if ($value > 0) {
+					$this->articleId = $value;
+				}
+				break;
+			case 'articleTitle':
+				if(is_string($value)) {
+					$this->articleTitle = $value;
+				}
+				break;
+		}
 	}
 }
