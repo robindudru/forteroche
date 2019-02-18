@@ -9,18 +9,14 @@ class ArticleManager extends Manager {
 	public function getArticles() {
 		$this->articlesArray = [];
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT * FROM articles ORDER BY id');
+		$req = $db->prepare('SELECT * FROM articles ORDER BY id');
+		$req->execute();
 		while ($data = $req->fetch()){
 			$article = new Article($data['id'], $data['title'], $data['content'], $data['date']);
 			array_push($this->articlesArray, $article);
 		};
 		$req->closeCursor();
-	}
-
-	public function getValue($property) {
-		if ($property == 'array') {
-			return $this->articlesArray;
-		}
+		return $this->articlesArray;
 	}
 
 	public function getArticle($articleId) {
@@ -36,6 +32,32 @@ class ArticleManager extends Manager {
 			throw new Exception ('Cet article n\'existe pas.');
 		}
 	}
+
+	public function getNextArticle($articleId) {
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT id FROM articles WHERE id = (SELECT min(id) from articles WHERE id > ?)');
+		$req->execute(array($articleId));
+		$data = $req->fetch();
+		if (!empty($data)) {
+			return $data['id'];
+		}
+		else {
+			return 'last';
+		}
+	}
+
+	public function getPrevArticle($articleId) {
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT id FROM articles WHERE id = (SELECT max(id) from articles WHERE id < ?)');
+		$req->execute(array($articleId));
+		$data = $req->fetch();
+		if (!empty($data)) {
+			return $data['id'];
+		}
+		else {
+			return 'last';
+		}
+	}	
 
 	public function add() {
 		if (!empty($_POST['title']) && !empty($_POST['content'])) {
@@ -59,7 +81,7 @@ class ArticleManager extends Manager {
 			'title' => $_POST['title'],
 			'content' => $_POST['content'],
 			'now' => date("Y-m-d H:i:s"),
-			'id' => intval($_GET['id'])
+			'id' => (int)$_GET['id']
 		];
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now WHERE id=:id');
@@ -69,7 +91,7 @@ class ArticleManager extends Manager {
 	}
 
 	public function delete() {
-		$articleId = intval($_GET['id']);
+		$articleId = (int)$_GET['id'];
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM articles WHERE id = ?');
 		if (!$req->execute(array($articleId))) {

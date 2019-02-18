@@ -4,7 +4,7 @@ ob_start();
 ?>
 <div class="row no-gutters">
 	<div class="col-8">
-		<h1 class="admin-section-title mt-5 mx-3">Edition</h1>
+		<h1 class="admin-section-title mt-5 mx-3">Redige un chapitre</h1>
 		<hr class="mx-3 my-0"/>
 		<div class="row no-gutters">
 			<form method="post" class="article-form ml-3" action="?mode=admin&action=addArticle">
@@ -14,7 +14,7 @@ ob_start();
 				</div>
 				<textarea class="ml-3" id="tinymce" name="content"></textarea><br />
 				<div class="text-right">
-					<button type="submit" class="btn btn-dark">Envoyer</button>
+					<button type="submit" class="btn btn-dark">Valider</button>
 				</div>
 			</form>
 		</div>

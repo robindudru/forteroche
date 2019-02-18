@@ -26,7 +26,8 @@ class Backend extends Common {
 
 	public function adminHome() {
 		$articles = $this->articleManager->getArticles();
-		$articlesArray = $this->articleManager->getValue('array');
+		$signaled = $this->commentManager->getSignaled();
+		$this->commentManager->getArticleTitle($signaled);
 		require_once('./view/backend/homeView.php');
 	}
 
@@ -60,6 +61,27 @@ class Backend extends Common {
 		$this->successManager->setMessage('articleDeleted');
 		$message = $this->successManager->getMessage();
 		require_once('./view/backend/successView.php');
+	}
+
+	public function approveComment() {
+		$this->commentManager->approve($_GET['id']);
+		$this->successManager->setMessage('commentApproved');
+		$message = $this->successManager->getMessage();
+		require_once('./view/backend/successView.php');
+	}
+
+	public function deleteComment() {
+		$this->commentManager->delete($_GET['id']);
+		$this->successManager->setMessage('commentDeleted');
+		$message = $this->successManager->getMessage();
+		require_once('./view/backend/successView.php');
+	}
+
+	public function confirm() {
+		$this->confirmManager->setValues($_GET['confirm']);
+		$message = $this->confirmManager->getMessage();
+		$url = $this->confirmManager->getUrl();
+		require_once('./view/backend/confirmView.php');
 	}
 
 }

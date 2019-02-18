@@ -6,12 +6,14 @@ class Comment{
 	private $content;
 	private $articleId;
 	private $articleTitle;
+	private $signaled;
 
-	public function __construct($id, $author, $content, $articleId) {
+	public function __construct($id, $author, $content, $articleId, $signaled) {
 		$this->setValue('id', $id);
 		$this->setValue('author', $author);
 		$this->setValue('content', $content);
 		$this->setValue('articleId', $articleId);
+		$this->setValue('signaled', $signaled);
 	}
 
 	public function getValue($property) {
@@ -29,6 +31,9 @@ class Comment{
 		}
 		if ($property == 'articleTitle') {
 			return $this->articleTitle;
+		}
+		if ($property == 'signaled') {
+			return $this->signaled;
 		}
 	}
 
@@ -60,6 +65,10 @@ class Comment{
 				if(is_string($value)) {
 					$this->articleTitle = $value;
 				}
+				break;
+			case 'signaled':
+				$value= (int)$value;
+					$this->signaled = $value;
 				break;
 		}
 	}

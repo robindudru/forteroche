@@ -83,6 +83,10 @@ a:hover {
 	color:grey;
 }
 
+aside .card-header {
+	font-weight: bold!important;
+}
+
 /*#################
 #####Admin Main####
 #######Template####
@@ -149,4 +153,8 @@ a:hover {
 
 #tinymce {
 	height:60vh;
+}
+
+.admin-modal {
+	top:25%;
 }

@@ -13,6 +13,8 @@ class UserManager extends Manager {
 		if (!empty($data)) {
 			if (password_verify($password, $data['password'])) {
 				$_SESSION['username'] = $username;
+				$_SESSION['surname'] = $data['surname'];
+				$_SESSION['name'] = $data['name'];
 				$_SESSION['avatar'] = $data['avatar'];
 				$_SESSION['role'] = $data['role'];
 				return true;

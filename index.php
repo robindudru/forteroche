@@ -28,9 +28,18 @@ try {
 						else if ($_GET['action'] == 'disconnect') {
 							$backController->disconnect();
 						}
+						else if ($_GET['action'] == 'approveComment') {
+							$backController->approveComment();
+						}
+						else if ($_GET['action'] == 'deleteComment') {
+							$backController->deleteComment();
+						}
 						else {
 							throw new Exception('Action inconnue');
 						}
+					}
+					else if (isset($_GET['confirm'])) {
+						$backController->confirm();
 					}
 					else {
 						$backController->adminHome();	

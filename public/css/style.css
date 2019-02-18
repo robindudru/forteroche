@@ -5,7 +5,24 @@
 body, html {
 	height:100%;
 	width:100%;
-	overflow: hidden;
+}
+
+body a, body a:visited, body a:active, body a:link {
+	color:black;
+	transition: all .5s ease;
+}
+
+body a:hover {
+	text-decoration: none;
+	color:grey;
+}
+
+header {
+	height:4vh;
+}
+
+footer {
+	height:3vh;
 }
 
 @font-face {
@@ -24,10 +41,6 @@ body, html {
     font-style: normal;
 }
 
-.content-wrapper{
-	height:calc(100% - 8vh);
-}
-
 .relative {
 	position: relative;
 }
@@ -38,9 +51,6 @@ body, html {
 
 .float-right {
 	float:right;
-}
-
-.left-page {
 }
 
 .right-page {
@@ -58,6 +68,53 @@ body, html {
 	text-align: center!important;
 	font-family: 'ostrich_sansmedium', Arial!important;
 	font-size: 1vw!important;
+}
+
+.top-right-header {
+	height: 100%;
+	border-left: 1px solid lightgrey;
+}
+
+.footer-wrapper {
+	height:5.5%;
+	font-family: 'ostrich_sansmedium', Arial!important;
+	font-size: 1vw!important;
+}
+
+.footer-right {
+	width: 89.5%;
+	position:absolute;
+	right:5%;
+}
+
+.footer-left .col-6 {
+	text-align: right;
+}
+
+.footer-left {
+	width: 92%;
+	position: absolute;
+	padding:auto;
+	left:2%;
+}
+
+.footer-left span, .footer-right span {
+	font-family: 'ostrich_sansmedium', Arial!important;
+	font-size: 1vw!important;
+}
+
+.footer-right span {
+	position: absolute;
+	right:0;
+	text-align: right!important;
+}
+
+.footer-left span {
+	text-align: left!important;
+}
+
+.main-content {
+	height:88vh;
 }
 
 .neutral-xl-title {
@@ -84,6 +141,10 @@ a:hover {
 	color:grey;
 }
 
+.card-header {
+	font-weight: bold!important;
+}
+
 /*#################
 #####Main Page#####
 ######Frontend#####
@@ -102,4 +163,53 @@ a:hover {
 #chapter-list a:hover {
 	text-decoration: none;
 	color:grey;
+}
+
+/*#################
+######Article######
+#################*/
+
+.separator {
+	position: absolute;
+	width:1px;
+	border-left: 1px solid lightgrey;
+	left:50%;
+	height:100%;
+}
+
+.article-two-pages {
+	height:94vh;
+	max-width:100%;
+	columns: 2;
+	overflow-x: scroll;
+}
+
+.article-two-pages p {
+	text-align: justify;
+	padding: 2vh 2.5vw 2vh 2.5vw;
+}
+
+.article-two-pages::-webkit-scrollbar { 
+    display: none; 
+}
+
+.article-comment:nth-child(odd){
+	background-color: #efefef;
+}
+
+.article-comment-form {
+	width:100%;
+}
+
+.comments-title {
+	font-family: 'ostrich_sansmedium', Arial!important;
+	font-size: 1.5vw;
+}
+
+.comment-author {
+	font-weight: bold;
+}
+
+.article-comment-form textarea{
+	width: 100%;
 }

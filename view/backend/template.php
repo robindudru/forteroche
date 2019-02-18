@@ -23,7 +23,7 @@
 					if(isset($_SESSION['username'])) {
 					?>
 						<div class="mx-3"><a href="?mode=admin">Accueil</a></div>
-						<div class="mx-3">
+						<div class="mx-3 mt-1">
 							<a href="?mode=admin&action=addArticle">Ajouter un article
 								<i class="fas fa-plus-circle pl-2 pb-3"></i></a>
 						</div>
@@ -43,7 +43,7 @@
 						if(isset($_SESSION['username'])) {
 						?>
 							<div class="col-9 text-right p-0">
-								<span class="username"><?= $_SESSION["username"] ?></span><br/>
+								<span class="username"><?= $_SESSION["surname"]. ' ' . $_SESSION["name"] ?></span><br/>
 								<a href="">Profil</a> - <a href="?mode=admin&action=disconnect">Deconnexion</a>	
 							</div>
 							<div class="col-3"><img src="./public/assets/img/avatars/<?= $_SESSION["avatar"] ?>" /></div>

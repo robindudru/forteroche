@@ -66,6 +66,5 @@ class Article {
 					$this->totalComments = $value;
 				}
 		}
-		
 	} 
 }
