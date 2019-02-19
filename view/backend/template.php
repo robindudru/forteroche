@@ -45,7 +45,7 @@
 						?>
 							<div class="col-9 text-right p-0">
 								<span class="username"><?= $_SESSION["surname"]. ' ' . $_SESSION["name"] ?></span><br/>
-								<a href="">Profil</a> - <a href="?mode=admin&action=disconnect">Deconnexion</a>	
+								<a href="?mode=admin&action=editProfile">Profil</a> - <a href="?mode=admin&action=disconnect">Deconnexion</a>	
 							</div>
 							<div class="col-3"><img src="./public/assets/img/avatars/<?= $_SESSION["avatar"] ?>" /></div>
 						<?php

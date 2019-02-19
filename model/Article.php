@@ -91,13 +91,13 @@ class Article {
     }
 
     /**
-     * @param mixed $content
+     * @param mixed $status
      *
      * @return self
      */
-    public function setStatus($content)
+    public function setStatus($status)
     {
-        $this->status = $content;
+        $this->status = $status;
 
         return $this;
     }

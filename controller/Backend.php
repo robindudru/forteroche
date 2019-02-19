@@ -93,4 +93,17 @@ class Backend extends Common {
 		require_once('./view/backend/confirmView.php');
 	}
 
+	public function editProfile() {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$this->userManager->editProfile();
+			$this->successManager->setMessage('profileEdited');
+			$message = $this->successManager->getMessage();
+			require_once('./view/backend/successView.php');
+		}
+		else {
+			$user = $this->userManager->getProfile();
+			require_once('./view/backend/editProfileView.php');
+		}
+	}
+
 }

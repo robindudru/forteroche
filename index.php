@@ -37,8 +37,11 @@ try {
 						else if ($_GET['action'] == 'deleteComment') {
 							$backController->deleteComment();
 						}
+						else if ($_GET['action'] == 'editProfile') {
+							$backController->editProfile();
+						}
 						else {
-							throw new Exception('Action inconnue');
+							throw new \Exception('Action inconnue');
 						}
 					}
 					else if (isset($_GET['confirm'])) {
@@ -49,7 +52,7 @@ try {
 					}
 				}
 				else {
-					throw new Exception('Vous n\'êtes pas administrateur !');
+					throw new \Exception('Vous n\'êtes pas administrateur !');
 				}
 			}
 			else {
@@ -57,7 +60,7 @@ try {
 			}
 		}
 		else {
-			throw new Exception('Mode inconnu');
+			throw new \Exception('Mode inconnu');
 		}
 	}
 
@@ -70,7 +73,7 @@ try {
 				$frontController->article();
 			}
 			else {
-				throw new Exception ('L\'identifiant ne peut pas être négatif.');
+				throw new \Exception ('L\'identifiant ne peut pas être négatif.');
 			}
 		}
 	}

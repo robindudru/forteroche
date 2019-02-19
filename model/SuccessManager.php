@@ -30,6 +30,9 @@ class SuccessManager {
 		if ($type == 'commentDeleted') {
 			$this->successMessage = 'Commentaire a été supprimé avec succès.';
 		}
+		if ($type == 'profileEdited') {
+			$this->successMessage = 'Profil mis à jour avec succès';
+		}
 	}
 
 	public function getMessage(){

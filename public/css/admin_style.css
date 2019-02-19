@@ -158,3 +158,8 @@ aside .card-header {
 .admin-modal {
 	top:25%;
 }
+
+
+.profile-modal {
+	position:relative;
+}

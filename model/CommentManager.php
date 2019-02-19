@@ -56,11 +56,11 @@ class CommentManager extends Manager {
 			$db = $this->dbConnect();
 			$req = $db->prepare('INSERT INTO comments (author, content, article_id) VALUES (:author, :content, :article_id)');
 			if (!$req->execute($values)) {
-				throw new Exception('Erreur lors de l\'ajout du commentaire.');
+				throw new \Exception('Erreur lors de l\'ajout du commentaire.');
 			}
 		}
 		else {
-			throw new Exception('Un ou plusieurs champs sont vides.');
+			throw new \Exception('Un ou plusieurs champs sont vides.');
 		}
 	}
 
@@ -68,7 +68,7 @@ class CommentManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE comments SET moderated = 1 WHERE id = ?');
 		if (!$req->execute(array($id))) {
-			throw new Exception('Erreur lors de l\'approbation du commentaire');
+			throw new \Exception('Erreur lors de l\'approbation du commentaire');
 		}
 		$req->closeCursor();
 	}
@@ -77,7 +77,7 @@ class CommentManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM comments WHERE id = ?');
 		if (!$req->execute(array($id))) {
-			throw new Exception('Erreur lors de la suppresion du commentaire');
+			throw new \Exception('Erreur lors de la suppresion du commentaire');
 		}
 		$req->closeCursor();
 	}
@@ -86,7 +86,7 @@ class CommentManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE comments SET signaled = signaled + 1 WHERE id = ?');
 		if (!$req->execute(array($id))) {
-			throw new Exception('Erreur lors du signalement du commentaire');
+			throw new \Exception('Erreur lors du signalement du commentaire');
 		}
 		$req->closeCursor();
 	}

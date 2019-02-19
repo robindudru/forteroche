@@ -68,11 +68,11 @@ class ArticleManager extends Manager {
 			$db = $this->dbConnect();
 			$req = $db->prepare('INSERT INTO articles (title, content, status) VALUES (:title, :content, :status)');
 			if (!$req->execute($values)) {
-				throw new Exception('Erreur lors de l\'ajout de l\'article');
+				throw new \Exception('Erreur lors de l\'ajout de l\'article');
 			}
 		}
 		else {
-			throw new Exception('Un ou plusieurs champs sont vides.');
+			throw new \Exception('Un ou plusieurs champs sont vides.');
 		}
 	}
 
@@ -96,7 +96,7 @@ class ArticleManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE articles SET status = "trash" WHERE id= ?');
 		if (!$req->execute(array($articleId))) {
-			throw new Exception ('Erreur lors de la mise en corbeille de l\'article');
+			throw new \Exception ('Erreur lors de la mise en corbeille de l\'article');
 		}
 	}
 
@@ -105,7 +105,7 @@ class ArticleManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM articles WHERE id = ?');
 		if (!$req->execute(array($articleId))) {
-			throw new Exception('Erreur lors de la suppression de l\'article');
+			throw new \Exception('Erreur lors de la suppression de l\'article');
 		}
 	}
 }
