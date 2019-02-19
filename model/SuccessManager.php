@@ -12,6 +12,9 @@ class SuccessManager {
 		if ($type == 'articleEdited') {
 			$this->successMessage = 'Article édité avec succès';
 		}
+		if ($type == 'articleTrashed') {
+			$this->successMessage = 'Article mis à la corbeille avec succès';
+		}
 		if ($type == 'articleDeleted') {
 			$this->successMessage = 'Article supprimé avec succès';
 		}

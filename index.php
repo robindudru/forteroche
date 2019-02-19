@@ -19,6 +19,9 @@ try {
 						else if ($_GET['action'] == 'editArticle') {
 							$backController->editArticle();
 						}
+						else if ($_GET['action'] == 'trashArticle') {
+							$backController->trashArticle();
+						}
 						else if ($_GET['action'] == 'deleteArticle') {
 							$backController->deleteArticle();
 						}

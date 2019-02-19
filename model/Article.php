@@ -7,6 +7,7 @@ class Article {
 	private $id;
 	private $title;
 	private $content;
+    private $status;
 	private $date;
 	private $totalComments;
 
@@ -14,6 +15,7 @@ class Article {
 		$this->setId($data['id']);
 		$this->setTitle($data['title']);
 		$this->setContent($data['content']);
+        $this->setStatus($data['status']);
 		$this->setDate($data['date']);
 		$commentManager = new CommentManager();
 		$totalComments = $commentManager->totalComments($this->getId()); 
@@ -76,6 +78,26 @@ class Article {
     public function setContent($content)
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $content
+     *
+     * @return self
+     */
+    public function setStatus($content)
+    {
+        $this->status = $content;
 
         return $this;
     }

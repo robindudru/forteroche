@@ -25,7 +25,9 @@ class Backend extends Common {
 	}
 
 	public function adminHome() {
-		$articles = $this->articleManager->getArticles();
+		$publishedArticles = $this->articleManager->getArticles('published');
+		$draftArticles = $this->articleManager->getArticles('draft');
+		$trashArticles = $this->articleManager->getArticles('trash');
 		$signaled = $this->commentManager->getSignaled();
 		$this->commentManager->getArticleTitle($signaled);
 		require_once('./view/backend/homeView.php');
@@ -54,6 +56,13 @@ class Backend extends Common {
 			$article = $this->articleManager->getArticle($_GET['id']);
 			require_once('./view/backend/editArticleView.php');
 		}
+	}
+
+	public function trashArticle(){
+		$this->articleManager->trash();
+		$this->successManager->setMessage('articleTrashed');
+		$message = $this->successManager->getMessage();
+		require_once('./view/backend/successView.php');
 	}
 
 	public function deleteArticle(){

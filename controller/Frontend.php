@@ -5,7 +5,7 @@ namespace Controller;
 class Frontend extends Common {
 
 	public function frontPage() {
-		$articles = $this->articleManager->getArticles();
+		$articles = $this->articleManager->getArticles('published');
 		$comments = $this->commentManager->getLastComments();
 		$this->commentManager->getArticleTitle($comments);
 		require_once('./view/frontend/homeView.php');

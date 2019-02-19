@@ -5,11 +5,11 @@ namespace Model;
 class ArticleManager extends Manager {
 	private $articlesArray;
 
-	public function getArticles() {
+	public function getArticles($status) {
 		$this->articlesArray = [];
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM articles ORDER BY id');
-		$req->execute();
+		$req = $db->prepare('SELECT * FROM articles WHERE status = ? ORDER BY id');
+		$req->execute(array($status));
 		while ($data = $req->fetch()){
 			$article = new Article($data);
 			array_push($this->articlesArray, $article);
@@ -62,10 +62,11 @@ class ArticleManager extends Manager {
 		if (!empty($_POST['title']) && !empty($_POST['content'])) {
 			$values = [
 				'title' => $_POST['title'],
-				'content' => $_POST['content']
+				'content' => $_POST['content'],
+				'status' => $_POST['status']
 			];
 			$db = $this->dbConnect();
-			$req = $db->prepare('INSERT INTO articles (title, content) VALUES (:title, :content)');
+			$req = $db->prepare('INSERT INTO articles (title, content, status) VALUES (:title, :content, :status)');
 			if (!$req->execute($values)) {
 				throw new Exception('Erreur lors de l\'ajout de l\'article');
 			}
@@ -79,13 +80,23 @@ class ArticleManager extends Manager {
 		$values = [
 			'title' => $_POST['title'],
 			'content' => $_POST['content'],
+			'status' => $_POST['status'],
 			'now' => date("Y-m-d H:i:s"),
 			'id' => (int)$_GET['id']
 		];
 		$db = $this->dbConnect();
-		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now WHERE id=:id');
+		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now, status=:status WHERE id=:id');
 		if (!$req->execute($values)) {
 			throw new Exception ('Erreur lors de l\'édition de l\'article');
+		}
+	}
+
+	public function trash() {
+		$articleId = (int)$_GET['id'];
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE articles SET status = "trash" WHERE id= ?');
+		if (!$req->execute(array($articleId))) {
+			throw new Exception ('Erreur lors de la mise en corbeille de l\'article');
 		}
 	}
 

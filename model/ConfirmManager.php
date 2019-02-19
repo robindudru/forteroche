@@ -16,8 +16,12 @@ class ConfirmManager {
 				$this->message = 'Vous êtes sur le point de supprimer ce commentaire. Etes-vous sûr ?';
 				$this->url = '?mode=admin&action=deleteComment&id='.$_GET['id'];
 				break;
+			case 'trashArticle' :
+				$this->message = 'Vous êtes sur le point de mettre cet article à la corbeille. Vous pourrez toujours le restaurer par la suite. Etes-vous sûr ?';
+				$this->url = '?mode=admin&action=trashArticle&id='.$_GET['id'];
+				break;
 			case 'deleteArticle' :
-				$this->message = 'Vous êtes sur le point de supprimer cet article. Etes-vous sûr ?';
+				$this->message = 'Vous êtes sur le point de supprimer définitivement cet article. Etes-vous sûr ?';
 				$this->url = '?mode=admin&action=deleteArticle&id='.$_GET['id'];
 				break;
 		}

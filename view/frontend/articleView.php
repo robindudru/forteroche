@@ -56,6 +56,6 @@ require_once('template.php');
 
 <script src="./public/js/Pager.js"></script>
 <script>
-	const pager = new Pager();
+const pager = new Pager();
 </script>
 
