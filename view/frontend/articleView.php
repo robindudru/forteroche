@@ -1,14 +1,15 @@
-<?php $title = $article->getValue('title');
+<?php $title = $article->getTitle();
 $nav = true;
-$pageTitle = $article->getValue('title');
-$articleContent = $article->getValue('content');
-$totalComments = $article->getValue('totalComments');
+$pageTitle = $article->getTitle();
+$title = $pageTitle;
+$articleContent = $article->getContent();
+$totalComments = $article->getTotalComments();
 
 ob_start(); ?>
 <div class="separator"></div>
 <div class="col-12 h-100 article-two-pages relative">
 	<h1 class="pl-5">
-	    <?= $article->getValue('title'); ?>
+	    <?= $title ?>
 	</h1>
 	<p id="leftContent">
 		<?= $articleContent ?>
@@ -28,8 +29,8 @@ ob_start(); ?>
         <?php
         foreach ($comments as $comment) { ?>
 			<div class="article-comment p-3"> 
-        		<span class="comment-author"><?= $comment->getValue('author');?></span><a title="Signaler ce commentaire" href="?action=article&id=<?= $_GET['id'] ?>&signal=<?= $comment->getValue('id') ?>"><i class="fas fa-exclamation-circle ml-2"></i></a><br />
-        		<span class="comment-content"><?= $comment->getValue('content');?></span>
+        		<span class="comment-author"><?= $comment->getAuthor() ?></span><a title="Signaler ce commentaire" href="?action=article&id=<?= $_GET['id'] ?>&signal=<?= $comment->getId() ?>"><i class="fas fa-exclamation-circle ml-2"></i></a><br />
+        		<span class="comment-content"><?= $comment->getContent() ?></span>
         	</div>
         <?php } ?>
       </div>

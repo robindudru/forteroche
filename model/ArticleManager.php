@@ -1,7 +1,6 @@
 <?php
 
-require_once('Manager.php');
-require_once('Article.php');
+namespace Model;
 
 class ArticleManager extends Manager {
 	private $articlesArray;
@@ -12,7 +11,7 @@ class ArticleManager extends Manager {
 		$req = $db->prepare('SELECT * FROM articles ORDER BY id');
 		$req->execute();
 		while ($data = $req->fetch()){
-			$article = new Article($data['id'], $data['title'], $data['content'], $data['date']);
+			$article = new Article($data);
 			array_push($this->articlesArray, $article);
 		};
 		$req->closeCursor();
@@ -25,7 +24,7 @@ class ArticleManager extends Manager {
 		$req->execute(array($articleId));
 		$data = $req->fetch();
 		if (!empty($data)) {
-			$article = new Article($data['id'], $data['title'], $data['content'], $data['date']);
+			$article = new Article($data);
 			return $article;
 		}
 		else {

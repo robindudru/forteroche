@@ -1,6 +1,6 @@
 <?php
 
-require_once('Common.php');
+namespace Controller;
 
 class Backend extends Common {
 

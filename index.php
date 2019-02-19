@@ -1,10 +1,10 @@
 <?php
 
-require_once('controller/Frontend.php');
-require_once('controller/Backend.php');
+require_once('controller/Autoloader.php');
+Autoloader::register();
 
-$frontController = new Frontend();
-$backController = new Backend();
+$frontController = new Controller\Frontend();
+$backController = new Controller\Backend();
 
 try {
 	if (isset($_GET['mode'])) {

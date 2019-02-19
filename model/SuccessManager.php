@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 class SuccessManager {
 	private $successMessage;
 

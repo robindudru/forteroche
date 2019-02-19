@@ -1,4 +1,7 @@
 <?php 
+
+namespace Model;
+
 class ConfirmManager {
 	private $message;
 	private $url;

@@ -1,8 +1,6 @@
 <?php
 
-require_once('Manager.php');
-require_once('Comment.php');
-require_once('ArticleManager.php');
+namespace Model;
 
 class CommentManager extends Manager {
 	private $lastCommentsArray;
@@ -13,7 +11,7 @@ class CommentManager extends Manager {
 		$req = $db->prepare('SELECT * FROM comments ORDER BY id DESC LIMIT 4');
 		$req->execute();
 		while ($data = $req->fetch()){
-			$comment = new Comment($data['id'], $data['author'], $data['content'], $data['article_id'], $data['signaled']);
+			$comment = new Comment($data);
 			array_push($this->lastCommentsArray, $comment);
 		};
 		$req->closeCursor();
@@ -26,7 +24,7 @@ class CommentManager extends Manager {
 		$req = $db->prepare('SELECT * FROM comments WHERE article_id = ? ORDER BY id DESC');
 		$req->execute(array($articleId));
 		while ($data = $req->fetch()) {
-			$comment = new Comment($data['id'], $data['author'], $data['content'], $data['article_id'], $data['signaled']);
+			$comment = new Comment($data);
 			array_push($this->commentsArray, $comment);
 		}
 		$req->closeCursor();
@@ -36,9 +34,9 @@ class CommentManager extends Manager {
 	public function getArticleTitle($commentsArray) {
 		$articleManager = new ArticleManager();
 		foreach($commentsArray as $comment) {
-			$article = $articleManager->getArticle($comment->getValue('articleId'));
-			$articleTitle = $article->getValue('title');
-			$comment->setValue('articleTitle', $articleTitle);
+			$article = $articleManager->getArticle($comment->getArticleId());
+			$articleTitle = $article->getTitle();
+			$comment->setArticleTitle($articleTitle);
 		}
 	}
 
@@ -99,7 +97,7 @@ class CommentManager extends Manager {
 		$req = $db->prepare('SELECT * FROM comments WHERE signaled > 0 AND moderated = 0 ORDER BY signaled DESC');
 		$req->execute();
 		while ($data = $req->fetch()){
-			$comment = new Comment($data['id'], $data['author'], $data['content'], $data['article_id'], $data['signaled']);
+			$comment = new Comment($data);
 			array_push($this->signaledArray, $comment);
 		};
 		$req->closeCursor();

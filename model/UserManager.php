@@ -1,5 +1,7 @@
 <?php 
 
+namespace Model;
+
 require_once('Manager.php');
 
 class UserManager extends Manager {

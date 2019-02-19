@@ -8,9 +8,9 @@ ob_start(); ?>
 			<div class="d-flex flex-column">
 				<?php 
 				foreach ($articles as $article){
-					$articleId = $article->getValue('id');
-					$articleTitle = $article->getValue('title');
-					$totalComments = $article->getValue('totalComments');
+					$articleId = $article->getId();
+					$articleTitle = $article->getTitle();
+					$totalComments = $article->getTotalComments();
 				?>
 					<div style="width:100%;">
 						<div class=float-left">
@@ -35,18 +35,18 @@ ob_start(); ?>
 			<div class="row no-gutters">
 				<?php 
 				foreach ($comments as $comment){
-					$articleId = $comment->getValue('articleId');
+					$articleId = $comment->getArticleId();
 				?>
 					<div class="col-6 mt-4">
 						<div class="card mr-4">
 							<div class="card-header d-flex justify-content-between">
-								<?= $comment->getValue('author') ?>
+								<?= $comment->getAuthor() ?>
 								<span class="card-subtitle text-muted small">
-									<a href="index.php?action=article&id=<?= $comment->getValue('articleId') ?>"><?= $comment->getValue('articleTitle') ?></a>
+									<a href="index.php?action=article&id=<?= $comment->getArticleId() ?>"><?= $comment->getArticleTitle() ?></a>
 								</span>
 							</div>
 							<div class="card-body">
-								<p class="card-text"><?php echo substr($comment->getValue('content'), 0, 200); if (strlen($comment->getValue('content')) > 200) { echo '...';} ?></p>
+								<p class="card-text"><?php echo substr($comment->getContent(), 0, 200); if (strlen($comment->getContent()) > 200) { echo '...';} ?></p>
 							</div>
 						</div>
 					</div>

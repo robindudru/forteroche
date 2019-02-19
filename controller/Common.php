@@ -1,12 +1,10 @@
 <?php
 
-require_once('./model/ArticleManager.php');
-require_once('./model/CommentManager.php');
-require_once('./model/SuccessManager.php');
-require_once('./model/UserManager.php');
-require_once('./model/ConfirmManager.php');
+namespace Controller;
+use Model;
 
 class Common {
+
 	protected $articleManager;
 	protected $commentManager;
 	protected $successManager;
@@ -14,10 +12,10 @@ class Common {
 	protected $confirmManager;
 
 	public function __construct(){	
-		$this->articleManager = new ArticleManager();
-		$this->commentManager = new CommentManager();
-		$this->successManager = new SuccessManager();
-		$this->userManager = new UserManager();
-		$this->confirmManager = new ConfirmManager();
+		$this->articleManager = new Model\ArticleManager();
+		$this->commentManager = new Model\CommentManager();
+		$this->successManager = new Model\SuccessManager();
+		$this->userManager = new Model\UserManager();
+		$this->confirmManager = new Model\ConfirmManager();
 	}
 }

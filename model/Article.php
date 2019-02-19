@@ -1,5 +1,8 @@
 <?php 
 
+namespace Model;
+use Model;
+
 class Article {
 	private $id;
 	private $title;
@@ -7,64 +10,113 @@ class Article {
 	private $date;
 	private $totalComments;
 
-	public function __construct($id, $title, $content, $date) {
-		$this->setValue('id', $id);
-		$this->setValue('title', $title);
-		$this->setValue('content', $content);
-		$this->setValue('date', $date);
+	public function __construct(array $data) {
+		$this->setId($data['id']);
+		$this->setTitle($data['title']);
+		$this->setContent($data['content']);
+		$this->setDate($data['date']);
 		$commentManager = new CommentManager();
-		$totalComments = $commentManager->totalComments($this->id); 
-		$this->setValue('totalComments', $totalComments);
+		$totalComments = $commentManager->totalComments($this->getId()); 
+		$this->setTotalComments($totalComments);
 	}
 
-	public function getValue($property) {
-		switch ($property) {
-			case 'id':
-				return $this->id;
-				break;
-			case 'title':
-				return $this->title;
-				break;
-			case 'content':
-				return $this->content;
-				break;
-			case 'date':
-				return $this->date;
-				break;	
-			case 'totalComments':
-				return $this->totalComments;
-				break;
-		}
-	}
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function setValue($property, $value) {
-		switch ($property) {
-			case 'id':
-				$value = (int)$value;
-				if ($value > 0) {
-					$this->id = $value;
-				}
-				break;
-			case 'title':
-				if (is_string($value)) {
-					$this->title = $value;
-				}
-				break;
-			case 'content':
-				if (is_string($value)) {
-					$this->content = $value;
-				}
-				break;
-			case 'date':
-				if (is_string($value)) {
-					$this->date = $value;
-				}
-				break;
-			case 'totalComments':
-				$value = (int)$value;
-				if ($value >= 0) {
-					$this->totalComments = $value;
-				}
-		}
-	} 
+    /**
+     * @param mixed $id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param mixed $content
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotalComments()
+    {
+        return $this->totalComments;
+    }
+
+    /**
+     * @param mixed $totalComments
+     *
+     * @return self
+     */
+    public function setTotalComments($totalComments)
+    {
+        $this->totalComments = $totalComments;
+
+        return $this;
+    }
 }

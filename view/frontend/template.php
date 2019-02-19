@@ -39,7 +39,7 @@
 						<?= $pageTitle ?>
 						<?php if (isset($nav)) { ?>
 							<a href="" data-toggle="modal" data-target="#article-comments">
-								<i class="fas fa-comment ml-3 mr-1"></i><?= $article->getValue('totalComments') ?>
+								<i class="fas fa-comment ml-3 mr-1"></i><?= $article->getTotalComments() ?>
 							</a>
 						<?php } ?>
 					</h1>

@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 class Comment{
 	private $id;
 	private $author;
@@ -8,68 +10,131 @@ class Comment{
 	private $articleTitle;
 	private $signaled;
 
-	public function __construct($id, $author, $content, $articleId, $signaled) {
-		$this->setValue('id', $id);
-		$this->setValue('author', $author);
-		$this->setValue('content', $content);
-		$this->setValue('articleId', $articleId);
-		$this->setValue('signaled', $signaled);
+	public function __construct(array $data) {
+		$this->setId($data['id']);
+		$this->setAuthor($data['author']);
+		$this->setContent($data['content']);
+		$this->setArticleId($data['article_id']);
+		$this->setSignaled($data['signaled']);
 	}
 
-	public function getValue($property) {
-		if ($property == 'id') {
-			return $this->id;
-		}
-		if ($property == 'author') {
-			return $this->author;
-		}
-		if ($property == 'content') {
-			return $this->content;
-		}
-		if ($property == 'articleId') {
-			return $this->articleId;
-		}
-		if ($property == 'articleTitle') {
-			return $this->articleTitle;
-		}
-		if ($property == 'signaled') {
-			return $this->signaled;
-		}
-	}
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	public function setValue($property, $value) {
-		switch ($property) {
-			case 'id':
-				$value = (int)$value;
-				if ($value > 0) {
-					$this->id = $value;
-				}
-				break;
-			case 'author':
-				if (is_string($value)) {
-					$this->author = $value;
-				}
-				break;
-			case 'content':
-				if (is_string($value)) {
-					$this->content = $value;
-				}
-				break;
-			case 'articleId':
-				$value = (int)$value;
-				if ($value > 0) {
-					$this->articleId = $value;
-				}
-				break;
-			case 'articleTitle':
-				if(is_string($value)) {
-					$this->articleTitle = $value;
-				}
-				break;
-			case 'signaled':
-				$value= (int)$value;
-					$this->signaled = $value;
-				break;
-		}
-	}
+    /**
+     * @param mixed $id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     *
+     * @return self
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param mixed $content
+     *
+     * @return self
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticleId()
+    {
+        return $this->articleId;
+    }
+
+    /**
+     * @param mixed $articleId
+     *
+     * @return self
+     */
+    public function setArticleId($articleId)
+    {
+        $this->articleId = $articleId;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticleTitle()
+    {
+        return $this->articleTitle;
+    }
+
+    /**
+     * @param mixed $articleTitle
+     *
+     * @return self
+     */
+    public function setArticleTitle($articleTitle)
+    {
+        $this->articleTitle = $articleTitle;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignaled()
+    {
+        return $this->signaled;
+    }
+
+    /**
+     * @param mixed $signaled
+     *
+     * @return self
+     */
+    public function setSignaled($signaled)
+    {
+        $this->signaled = $signaled;
+
+        return $this;
+    }
 }

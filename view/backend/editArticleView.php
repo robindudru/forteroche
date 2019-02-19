@@ -1,5 +1,5 @@
 <?php
-$title = 'Edition | '. $article->getValue('title');
+$title = 'Edition | '. $article->getTitle();
 ob_start();
 ?>
 <div class="row no-gutters">
@@ -10,9 +10,9 @@ ob_start();
 			<form method="post" class="article-form ml-3" action="?mode=admin&action=editArticle&id=<?= $_GET['id'] ?>">
 				<div class="input-group mb-3 mt-3">
 					<span class="input-group-text">Titre</span>
-					<input type="text" class="form-control" name="title" value="<?= $article->getValue('title') ?>" required>
+					<input type="text" class="form-control" name="title" value="<?= $article->getTitle() ?>" required>
 				</div>
-				<textarea class="ml-3" id="tinymce" name="content" required><?= $article->getValue('content') ?></textarea><br />
+				<textarea class="ml-3" id="tinymce" name="content" required><?= $article->getContent() ?></textarea><br />
 				<div class="text-right">
 					<button type="submit" class="btn btn-dark">Editer</button>
 				</div>
