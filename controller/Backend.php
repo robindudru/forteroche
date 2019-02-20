@@ -5,7 +5,7 @@ namespace Controller;
 class Backend extends Common {
 
 	public function login() {
-		if  ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		if  ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			$login = $this->userManager->login();
 			if ($login) {
 				$this->adminHome();
@@ -36,9 +36,7 @@ class Backend extends Common {
 	public function addArticle(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$this->articleManager->add();
-			$this->successManager->setMessage('articleAdded');
-			$message = $this->successManager->getMessage();
-			require_once('./view/backend/successView.php');
+			$this->successManager->success('articleAdded');
 		}
 		else {
 			require_once('./view/backend/addArticleView.php');
@@ -48,9 +46,7 @@ class Backend extends Common {
 	public function editArticle(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$this->articleManager->edit();
-			$this->successManager->setMessage('articleEdited');
-			$message = $this->successManager->getMessage();
-			require_once('./view/backend/successView.php');
+			$this->successManager->success('articleEdited');
 		}
 		else {
 			$article = $this->articleManager->getArticle($_GET['id']);
@@ -60,45 +56,32 @@ class Backend extends Common {
 
 	public function trashArticle(){
 		$this->articleManager->trash();
-		$this->successManager->setMessage('articleTrashed');
-		$message = $this->successManager->getMessage();
-		require_once('./view/backend/successView.php');
+		$this->successManager->success('articleTrashed');
 	}
 
 	public function deleteArticle(){
 		$this->articleManager->delete();
-		$this->successManager->setMessage('articleDeleted');
-		$message = $this->successManager->getMessage();
-		require_once('./view/backend/successView.php');
+		$this->successManager->success('articleDeleted');
 	}
 
 	public function approveComment() {
 		$this->commentManager->approve($_GET['id']);
-		$this->successManager->setMessage('commentApproved');
-		$message = $this->successManager->getMessage();
-		require_once('./view/backend/successView.php');
+		$this->successManager->success('commentApproved');
 	}
 
 	public function deleteComment() {
 		$this->commentManager->delete($_GET['id']);
-		$this->successManager->setMessage('commentDeleted');
-		$message = $this->successManager->getMessage();
-		require_once('./view/backend/successView.php');
+		$this->successManager->success('commentDeleted');
 	}
 
 	public function confirm() {
-		$this->confirmManager->setValues($_GET['confirm']);
-		$message = $this->confirmManager->getMessage();
-		$url = $this->confirmManager->getUrl();
-		require_once('./view/backend/confirmView.php');
+		$this->confirmManager->confirm($_GET['confirm'], $_GET['id']);
 	}
 
 	public function editProfile() {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$this->userManager->editProfile();
-			$this->successManager->setMessage('profileEdited');
-			$message = $this->successManager->getMessage();
-			require_once('./view/backend/successView.php');
+			$this->successManager->success('profileEdited');
 		}
 		else {
 			$user = $this->userManager->getProfile();

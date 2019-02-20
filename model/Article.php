@@ -9,6 +9,7 @@ class Article {
 	private $content;
     private $status;
 	private $date;
+    private $updated;
 	private $totalComments;
 
 	public function __construct(array $data) {
@@ -17,6 +18,7 @@ class Article {
 		$this->setContent($data['content']);
         $this->setStatus($data['status']);
 		$this->setDate($data['date']);
+        $this->setUpdated($data['updated']);
 		$commentManager = new CommentManager();
 		$totalComments = $commentManager->totalComments($this->getId()); 
 		$this->setTotalComments($totalComments);
@@ -118,6 +120,26 @@ class Article {
     public function setDate($date)
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param mixed $updated
+     *
+     * @return self
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
 
         return $this;
     }

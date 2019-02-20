@@ -49,7 +49,7 @@ class CommentManager extends Manager {
 	public function add() {
 		if (!empty($_POST['username']) && !empty($_POST['content'])) {
 			$values = [
-				'author' => $_POST['username'],
+				'author' => (string)$_POST['username'],
 				'content' => $_POST['content'],
 				'article_id' => (int)$_GET['id'],
 			];

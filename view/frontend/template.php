@@ -62,6 +62,9 @@
 						<a href="?action=article&id=<?= $prevId ?>">CHAPITRE PRECEDENT</a>
 						<?php } ?>
 					</div>
+					<?php } 
+					else { ?>
+						<h2>UN LIVRE EN LIGNE DE <?= $admin->getSurname() . ' ' . $admin->getName() ?></h2>
 					<?php } ?>
 				</footer>
 			</div>
@@ -70,12 +73,15 @@
 					<?php if (isset($nav)) { ?>
 					<div class="col-6">
 						<?php if($nextId !== 'last') { ?>
-						<a href="?action=article&id=<?= $nextId ?>">CHAPITRE SUIVANT</a>
+							<a href="?action=article&id=<?= $nextId ?>">CHAPITRE SUIVANT</a>
 						<?php } ?>
 					</div>
 					<div class= "col-3 offset-3">
 						<span id="next"><a href="#">PAGE SUIVANTE <i class="fas fa-chevron-right"></i></a></span>
 					</div>
+					<?php }
+					else { ?>
+						<h2>(c) <?= $admin->getSurname() . ' ' . $admin->getName() ?> - 2019</h2>
 					<?php } ?>
 				</footer>
 			</div>

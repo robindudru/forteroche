@@ -24,8 +24,8 @@ ob_start();
 		<div class="row mx-2 mt-3 pr-3">
     		<label class="class-form-label col-4" for="status"><b>Cet article doit être</b></label>
     		<select class="form-control col-8" name="status">
-      			<option>publié</option>
-		      	<option>un brouillon</option>
+      			<option value="published">publié</option>
+		      	<option value="draft">un brouillon</option>
 		    </select>
   		</div>
 		<div class="text-right pr-4 mt-3">

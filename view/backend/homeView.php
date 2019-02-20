@@ -9,7 +9,7 @@ ob_start();
 				<h1 class="admin-section-title mx-3">Gestion des articles</h1>
 			</div>
 			<div class="col-7 h-50 d-flex flex-row justify-content-end">
-				<button id="published" class="btn btn-dark mx-2">Publies</button>
+				<button id="published" class="btn btn-dark mx-2">Publiés</button>
 				<button id="draft" class="btn btn-dark mx-2">Brouillons</button>
 				<button id="trash" class="btn btn-dark mx-2 h-60">Corbeille</button>
 			</div>

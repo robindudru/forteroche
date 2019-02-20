@@ -13,35 +13,36 @@ try {
 			if (isset($_SESSION['username'])) {
 				if ($_SESSION['role'] == 'admin') {
 					if (isset($_GET['action'])) {
-						if ($_GET['action'] == 'addArticle') {
-							$backController->addArticle();
-						}
-						else if ($_GET['action'] == 'editArticle') {
-							$backController->editArticle();
-						}
-						else if ($_GET['action'] == 'trashArticle') {
-							$backController->trashArticle();
-						}
-						else if ($_GET['action'] == 'deleteArticle') {
-							$backController->deleteArticle();
-						}
-						else if ($_GET['action'] == 'login') {
-							$backController->login();
-						}
-						else if ($_GET['action'] == 'disconnect') {
-							$backController->disconnect();
-						}
-						else if ($_GET['action'] == 'approveComment') {
-							$backController->approveComment();
-						}
-						else if ($_GET['action'] == 'deleteComment') {
-							$backController->deleteComment();
-						}
-						else if ($_GET['action'] == 'editProfile') {
-							$backController->editProfile();
-						}
-						else {
-							throw new \Exception('Action inconnue');
+						switch($_GET['action']) {
+							case 'addArticle':
+								$backController->addArticle();
+								break;
+							case 'editArticle':
+								$backController->editArticle();
+								break;
+							case 'trashArticle':
+								$backController->trashArticle();
+								break;
+							case 'deleteArticle':
+								$backController->deleteArticle();
+								break;
+							case 'login':
+								$backController->login();
+								break;
+							case 'disconnect':
+								$backController->disconnect();
+								break;
+							case 'approveComment':
+								$backController->approveComment();
+								break;
+							case 'deleteComment':
+								$backController->deleteComment();
+								break;
+							case 'editProfile':
+								$backController->editProfile();
+								break;
+							default:
+								throw new \Exception('Action inconnue');
 						}
 					}
 					else if (isset($_GET['confirm'])) {

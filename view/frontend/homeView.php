@@ -5,7 +5,7 @@ ob_start(); ?>
 	<div class="col-6 h-100 px-5 left-page">
 		<nav id="chapter-list">
 			<span class="neutral-xl-title">Table des matières</span><br /><br />
-			<div class="d-flex flex-column">
+			<div class="d-flex flex-column mt-4">
 				<?php 
 				foreach ($articles as $article){
 					$articleId = $article->getId();
@@ -53,6 +53,21 @@ ob_start(); ?>
 				<?php
 				}
 				?>
+			</div>
+			<div class="row mt-5 no-gutters">
+				<div class="col-12 mb-5">
+					<span class="neutral-md-title col-12">Réseaux sociaux</span><br />
+					<span class="text-muted pl-3">Retrouvez <?= $admin->getSurname() . ' ' . $admin->getName()?> sur les réseaux sociaux
+				</div>
+				<div class="col-4 text-center">
+					<a href="https://twitter.com/<?= $admin->getTwitter() ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+				</div>
+				<div class="col-4 text-center">
+					<a href="https://www.facebook.com/<?= $admin->getTwitter() ?>" target="_blank"><i class="fab fa-facebook"></i></a>
+				</div>
+				<div class="col-4 text-center">
+					<a href="https://www.instagram.com/<?= $admin->getTwitter() ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+				</div>
 			</div>
 		</div>		
 	</div>

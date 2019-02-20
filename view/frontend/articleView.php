@@ -4,6 +4,8 @@ $pageTitle = $article->getTitle();
 $title = $pageTitle;
 $articleContent = $article->getContent();
 $totalComments = $article->getTotalComments();
+$date = $article->getDate();
+$updated = $article->getUpdated();
 
 ob_start(); ?>
 <div class="separator"></div>
@@ -11,6 +13,7 @@ ob_start(); ?>
 	<h1 class="pl-5">
 	    <?= $title ?>
 	</h1>
+  <span class="text-muted pl-5">publié le <?php echo $date; if($date !== $updated) {echo ' édité le ' . $updated;} ?></span>
 	<p id="leftContent">
 		<?= $articleContent ?>
 	</p>

@@ -5,6 +5,7 @@
 body, html {
 	height:100%;
 	width:100%;
+	overflow-y: hidden;
 }
 
 body a, body a:visited, body a:active, body a:link {
@@ -53,6 +54,33 @@ footer {
 	float:right;
 }
 
+.left-page {
+	overflow-y: scroll;
+	scroll-margin: 10vh 1vw 0 0;
+}
+
+.left-page::-webkit-scrollbar-track
+{
+	width:.7vw;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.left-page::-webkit-scrollbar
+{
+	width: 1.5vw;
+	background-color: #F5F5F5;
+}
+
+.left-page::-webkit-scrollbar-thumb
+{
+	border: .5vw solid rgba(0,0,0,0);
+	background-clip: padding-box;
+	border-radius: 15px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
 .right-page {
 	border-left: 1px solid lightgrey;
 }
@@ -96,6 +124,11 @@ footer {
 	position: absolute;
 	padding:auto;
 	left:2%;
+}
+
+.footer-left h2, .footer-right h2{
+	font-size:1vw!important;
+	margin: 0 auto;
 }
 
 .footer-left span, .footer-right span {
@@ -163,6 +196,10 @@ a:hover {
 #chapter-list a:hover {
 	text-decoration: none;
 	color:grey;
+}
+
+.right-page .fab {
+	font-size: 4vw;
 }
 
 /*#################

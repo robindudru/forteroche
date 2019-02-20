@@ -28,7 +28,7 @@ class ArticleManager extends Manager {
 			return $article;
 		}
 		else {
-			throw new Exception ('Cet article n\'existe pas.');
+			throw new \Exception ('Cet article n\'existe pas.');
 		}
 	}
 
@@ -87,7 +87,7 @@ class ArticleManager extends Manager {
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now, status=:status WHERE id=:id');
 		if (!$req->execute($values)) {
-			throw new Exception ('Erreur lors de l\'édition de l\'article');
+			throw new \Exception ('Erreur lors de l\'édition de l\'article');
 		}
 	}
 
@@ -104,7 +104,8 @@ class ArticleManager extends Manager {
 		$articleId = (int)$_GET['id'];
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM articles WHERE id = ?');
-		if (!$req->execute(array($articleId))) {
+		$req2 = $db->prepare('DELETE FROM comments WHERE article_id = ?');
+		if (!$req->execute(array($articleId)) || !$req2->execute(array($articleId))) {
 			throw new \Exception('Erreur lors de la suppression de l\'article');
 		}
 	}
