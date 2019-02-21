@@ -46,7 +46,7 @@ ob_start(); ?>
 								</span>
 							</div>
 							<div class="card-body">
-								<p class="card-text"><?php echo substr($comment->getContent(), 0, 200); if (strlen($comment->getContent()) > 200) { echo '...';} ?></p>
+								<p class="card-text"><?php echo substr($comment->getContent(), 0, 150); if (strlen($comment->getContent()) > 150) { echo '...';} ?></p>
 							</div>
 						</div>
 					</div>

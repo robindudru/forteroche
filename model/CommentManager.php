@@ -8,7 +8,7 @@ class CommentManager extends Manager {
 	public function getLastComments() {
 		$this->lastCommentsArray = [];
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM comments ORDER BY id DESC LIMIT 4');
+		$req = $db->prepare('SELECT * FROM comments ORDER BY id DESC LIMIT 6');
 		$req->execute();
 		while ($data = $req->fetch()){
 			$comment = new Comment($data);
