@@ -10,7 +10,7 @@ ob_start();
 			<form method="post" class="article-form ml-3" action="?mode=admin&action=addArticle">
 				<div class="input-group mb-3 mt-3">
 					<span class="input-group-text">Titre</span>
-					<input type="text" class="form-control" name="title">
+					<input type="text" class="form-control" name="title" required>
 				</div>
 				<textarea class="ml-3" id="tinymce" name="content"></textarea><br />
 				<div class="text-right">

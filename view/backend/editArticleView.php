@@ -12,7 +12,7 @@ ob_start();
 					<span class="input-group-text">Titre</span>
 					<input type="text" class="form-control" name="title" value="<?= $article->getTitle() ?>" required>
 				</div>
-				<textarea class="ml-3" id="tinymce" name="content" required><?= $article->getContent() ?></textarea><br />
+				<textarea class="ml-3" id="tinymce" name="content"><?= $article->getContent() ?></textarea><br />
 				<div class="text-right">
 					<button type="submit" class="btn btn-dark">Editer</button>
 				</div>

@@ -61,7 +61,7 @@ class ArticleManager extends Manager {
 	public function add() {
 		if (!empty($_POST['title']) && !empty($_POST['content'])) {
 			$values = [
-				'title' => $_POST['title'],
+				'title' => StringManager::noAccents(trim((string)$_POST['title'])),
 				'content' => $_POST['content'],
 				'status' => $_POST['status']
 			];
@@ -78,7 +78,7 @@ class ArticleManager extends Manager {
 
 	public function edit() {
 		$values = [
-			'title' => $_POST['title'],
+			'title' => StringManager::noAccents(trim((string)$_POST['title'])),
 			'content' => $_POST['content'],
 			'status' => $_POST['status'],
 			'now' => date("Y-m-d H:i:s"),
