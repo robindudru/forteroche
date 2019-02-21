@@ -1,0 +1,19 @@
+#--------------------------------------------------
+# Directory : root
+#--------------------------------------------------
+
+Options +FollowSymlinks
+RewriteEngine on
+
+#--------------------------------------------------
+# Rewriting Rules :
+#--------------------------------------------------
+
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)/([a-zA-Z0-9\-\_\/]+)/([a-zA-Z0-9\-\_\/]+)$ index.php?mode=$1&action=$2&id=$3 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)/([a-zA-Z0-9\-\_\/]+)-([a-zA-Z0-9\-\_\/]+)$ index.php?mode=$1&confirm=$2&id=$3 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)--([a-zA-Z0-9\-\_\/]+)-([a-zA-Z0-9\-\_\/]+)$   index.php?action=$1&title=$2&id=$3 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)-([a-zA-Z0-9\-\_\/]+)signal([a-zA-Z0-9\-\_\/]+)$   index.php?action=$1&id=$2&signal=$3 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)/([a-zA-Z0-9\-\_\/]+)$   index.php?mode=$1&action=$2 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)/$   index.php?mode=$1 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]+)$   index.php?mode=$1 [L]
+RewriteRule ^$   index.php [L]

@@ -1,28 +1,30 @@
 <?php 
-
 namespace Model;
+
 use Model;
 
-class Article {
-	private $id;
-	private $title;
-	private $content;
+class Article
+{
+    private $id;
+    private $title;
+    private $content;
     private $status;
-	private $date;
+    private $date;
     private $updated;
-	private $totalComments;
+    private $totalComments;
 
-	public function __construct(array $data) {
-		$this->setId($data['id']);
-		$this->setTitle($data['title']);
-		$this->setContent($data['content']);
+    public function __construct(array $data)
+    {
+        $this->setId($data['id']);
+        $this->setTitle($data['title']);
+        $this->setContent($data['content']);
         $this->setStatus($data['status']);
-		$this->setDate($data['date']);
+        $this->setDate($data['date']);
         $this->setUpdated($data['updated']);
-		$commentManager = new CommentManager();
-		$totalComments = $commentManager->totalComments($this->getId()); 
-		$this->setTotalComments($totalComments);
-	}
+        $commentManager = new CommentManager();
+        $totalComments = $commentManager->totalComments($this->getId()); 
+        $this->setTotalComments($totalComments);
+    }
 
     /**
      * @return mixed
@@ -40,7 +42,6 @@ class Article {
     public function setId($id)
     {
         $this->id = $id;
-
         return $this;
     }
 
@@ -60,7 +61,6 @@ class Article {
     public function setTitle($title)
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -80,7 +80,6 @@ class Article {
     public function setContent($content)
     {
         $this->content = $content;
-
         return $this;
     }
 
@@ -100,7 +99,6 @@ class Article {
     public function setStatus($status)
     {
         $this->status = $status;
-
         return $this;
     }
 
@@ -120,7 +118,6 @@ class Article {
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
 
@@ -140,7 +137,6 @@ class Article {
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-
         return $this;
     }
 
@@ -160,7 +156,6 @@ class Article {
     public function setTotalComments($totalComments)
     {
         $this->totalComments = $totalComments;
-
         return $this;
     }
 }

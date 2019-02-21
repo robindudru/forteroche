@@ -13,7 +13,7 @@ ob_start();
 			</div>
 			<div class="card-body">
 				<p class="card-text text-center">
-					<form method="post" action="?mode=admin&action=editProfile">
+					<form method="post" action="admin/editProfile">
 						<input type="hidden" name="id" value="<?= $user->getId() ?>" required>
   						<div class="form-group">
     						<label for="username">Pseudonyme</label>
@@ -63,4 +63,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

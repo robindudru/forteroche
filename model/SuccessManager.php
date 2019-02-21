@@ -1,11 +1,12 @@
 <?php
-
 namespace Model;
 
-class SuccessManager {
+class SuccessManager
+{
 	private $successMessage;
 
-	public function setMessage($type) {
+	public function setMessage($type)
+	{
 		if ($type === 'articleAdded') {
 			$this->successMessage = 'Article ajouté avec succès';
 		}
@@ -35,13 +36,15 @@ class SuccessManager {
 		}
 	}
 
-	public function getMessage(){
+	public function getMessage()
+	{
 		return $this->successMessage;
 	}
 
-	public function success($type){
+	public function success($type)
+	{
 		$this->setMessage($type);
 		$message = $this->getMessage();
-		($type === 'commentAdded' || $type === 'commentSignaled') ? require_once('./view/frontend/successView.php') : require_once('./view/backend/successView.php');
+		($type === 'commentAdded' || $type === 'commentSignaled') ? require_once './view/frontend/successView.php' : require_once './view/backend/successView.php';
 	}
 }

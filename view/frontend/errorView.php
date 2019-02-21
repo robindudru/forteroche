@@ -18,7 +18,7 @@ ob_start();
 					Si pour vous cela n'a pas de sens, contactez <a href="mailto:jean@forteroche.com"><u>l'administrateur de ce site</u></a> et donnez lui ce texte d'erreur. Précisez aussi ce que vous avez fait pour en arriver là. Pas de panique, tout va rentrer dans l'ordre...
 				</p>
 				<div class="text-center">
-					<a href="index.php"><button class="btn btn-dark">Retour</button></a>
+					<a href=""><button class="btn btn-dark">Retour</button></a>
 				</div>
 			</div>
 		</div>
@@ -28,4 +28,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('./view/backend/template.php');
+require_once './view/backend/template.php';

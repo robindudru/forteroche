@@ -1,6 +1,6 @@
 <?php
 
-require_once('controller/Autoloader.php');
+require_once 'Controller/Autoloader.php';
 Autoloader::register();
 
 $frontController = new Controller\Frontend();
@@ -8,10 +8,10 @@ $backController = new Controller\Backend();
 
 try {
 	if (isset($_GET['mode'])) {
-		if ($_GET['mode'] == 'admin') {
+		if ($_GET['mode'] === 'admin') {
 			session_start();
 			if (isset($_SESSION['username'])) {
-				if ($_SESSION['role'] == 'admin') {
+				if ($_SESSION['role'] === 'admin') {
 					if (isset($_GET['action'])) {
 						switch($_GET['action']) {
 							case 'addArticle':

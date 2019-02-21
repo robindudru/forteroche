@@ -15,7 +15,7 @@ ob_start();
 				<p class="card-text">
 					Vous essayez d'entrer dans l'espace d'administration de ce site. Seuls les auteurs autorisés peuvent se connecter. Si vous n'arrivez pas à vous connecter, contactez l'administrateur à <a href="mailto:jean@forteroche.fr"><u>cette adresse</u></a>.
 				</p>
-				<form method="post" id="login-form" action="?mode=admin&action=login">
+				<form method="post" id="login-form" action="admin/login">
 					<div class="input-group mb-3 mt-5">
 						<span class="input-group-text">Nom d'utilisateur</span>
 						<input type="text" class="form-control" name="username" required>
@@ -36,4 +36,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

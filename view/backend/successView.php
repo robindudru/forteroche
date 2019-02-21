@@ -16,7 +16,7 @@ ob_start();
 					<?= $message ?>
 				</p>
 				<div class="text-center">
-					<a href="?mode=admin"><button class="btn btn-dark">Retour</button></a>
+					<a href="admin"><button class="btn btn-dark">Retour</button></a>
 				</div>
 			</div>
 		</div>
@@ -26,4 +26,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

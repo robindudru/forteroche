@@ -14,7 +14,7 @@ ob_start(); ?>
 				?>
 					<div style="width:100%;">
 						<div class=float-left">
-							<h2><a href="index.php?action=article&id=<?= $articleId ?>"><?= $articleTitle ?></a></h2>
+							<h2><a href="article--<?= Model\StringManager::slug($articleTitle) ?>-<?= $articleId ?>"><?= $articleTitle ?></a></h2>
 						</div>
 						<div class="float-right mt-2 ml-2">
 							<i class="fas fa-comment"> </i> <?= $totalComments ?></i>
@@ -42,7 +42,7 @@ ob_start(); ?>
 							<div class="card-header d-flex justify-content-between">
 								<?= $comment->getAuthor() ?>
 								<span class="card-subtitle text-muted small">
-									<a href="index.php?action=article&id=<?= $comment->getArticleId() ?>"><?= $comment->getArticleTitle() ?></a>
+									<a href="article--<?= Model\StringManager::slug($comment->getArticleTitle()) ?>-<?= $comment->getArticleId() ?>"><?= $comment->getArticleTitle() ?></a>
 								</span>
 							</div>
 							<div class="card-body">
@@ -73,4 +73,4 @@ ob_start(); ?>
 	</div>
 	
 <?php $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

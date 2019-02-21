@@ -27,7 +27,7 @@ ob_start();
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
 								<span class="admin-card-title">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>">
+									<a href="admin/editArticle/<?= $article->getId() ?>">
 										<?php
 										$articleTitle= $article->getTitle();
 										echo substr($articleTitle, 0, 50);
@@ -36,10 +36,10 @@ ob_start();
 									</a>
 								</span>
 								<span class="card-subtitle text-muted small">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>" title="Editer">
+									<a href="admin/editArticle/<?= $article->getId() ?>" title="Editer">
 										<i class="fas fa-edit mr-1"></i>
 									</a>
-									<a href="?mode=admin&confirm=trashArticle&id=<?= $article->getId() ?>" title="Mettre à la corbeille">
+									<a href="admin/trashArticle-<?= $article->getId() ?>" title="Mettre à la corbeille">
 										<i class="fas fa-trash-alt"></i>
 									</a>
 								</span>
@@ -64,7 +64,7 @@ ob_start();
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
 								<span class="admin-card-title">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>">
+									<a href="admin/editArticle/=<?= $article->getId() ?>">
 										<?php
 										$articleTitle= htmlspecialchars($article->getTitle());
 										echo substr($articleTitle, 0, 50);
@@ -73,10 +73,10 @@ ob_start();
 									</a>
 								</span>
 								<span class="card-subtitle text-muted small">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>" title="Editer">
+									<a href="admin/editArticle/=<?= $article->getId() ?>" title="Editer">
 										<i class="fas fa-edit mr-1"></i>
 									</a>
-									<a href="?mode=admin&confirm=trashArticle&id=<?= $article->getId() ?>" title="Mettre à la corbeille">
+									<a href="admin/trashArticle-<?= $article->getId() ?>" title="Mettre à la corbeille">
 										<i class="fas fa-trash-alt"></i>
 									</a>
 								</span>
@@ -101,7 +101,7 @@ ob_start();
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
 								<span class="admin-card-title">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>">
+									<a href="admin/editArticle/<?= $article->getId() ?>">
 										<?php
 										$articleTitle= htmlspecialchars($article->getTitle());
 										echo substr($articleTitle, 0, 50);
@@ -110,10 +110,10 @@ ob_start();
 									</a>
 								</span>
 								<span class="card-subtitle text-muted small">
-									<a href="?mode=admin&action=editArticle&id=<?= $article->getId() ?>" title="Editer">
+									<a href="admin/editArticle/<?= $article->getId() ?>" title="Editer">
 										<i class="fas fa-edit mr-1"></i>
 									</a>
-									<a href="?mode=admin&confirm=deleteArticle&id=<?= $article->getId() ?>" title="Supprimer">
+									<a href="admin/deleteArticle-<?= $article->getId() ?>" title="Supprimer">
 										<i class="fas fa-times-circle"></i>
 									</a>
 								</span>
@@ -144,8 +144,8 @@ ob_start();
 								<?= $comment->getAuthor() ?>
 								<span class="card-subtitle text-muted small">
 									signalé <?= $comment->getSignaled() ?> fois 
-									<a title="Valider ce commentaire" href="?mode=admin&confirm=approveComment&id=<?= $comment->getId() ?>"><i class="fas fa-check-square ml-2"></i></a>
-									<a title="Supprimer ce commentaire" href="?mode=admin&confirm=deleteComment&id=<?= $comment->getId() ?>"><i class="fas fa-times ml-2"></i></a>
+									<a title="Valider ce commentaire" href="admin/approveComment-<?= $comment->getId() ?>"><i class="fas fa-check-square ml-2"></i></a>
+									<a title="Supprimer ce commentaire" href="admin/deleteComment-<?= $comment->getId() ?>"><i class="fas fa-times ml-2"></i></a>
 								</span>
 							</div>
 							<div class="card-body">
@@ -161,7 +161,7 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';
  ?>
 
  <script src="./public/js/ArticlesCategoriesNav.js"></script>

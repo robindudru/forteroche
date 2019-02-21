@@ -3,10 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="noindex" />
+		<base href="http://localhost/forteroche/">
 		<title><?= $title ?></title>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<link rel="stylesheet" href="./public/css/admin_style.css">
+		<link rel="stylesheet" href="http://localhost/forteroche/public/css/admin_style.css">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=uhyykhime2vq6i59wnrvg33bjmuadk82qs7rw0jfiu26a5hm"></script>
 		<script>
@@ -23,12 +25,12 @@
 					<?php
 					if(isset($_SESSION['username'])) {
 					?>
-						<div class="mx-3"><a href="?mode=admin">Accueil</a></div>
+						<div class="mx-3"><a href="admin">Accueil</a></div>
 						<div class="mx-3 mt-1">
-							<a href="?mode=admin&action=addArticle">Ajouter un article
+							<a href="admin/addArticle">Ajouter un article
 								<i class="fas fa-plus-circle pl-2 pb-3"></i></a>
 						</div>
-						<div class="mx-5"><a target="_blank" href="index.php">Voir le site</a></div>
+						<div class="mx-5"><a target="_blank" href="">Voir le site</a></div>
 					<?php
 					}
 					else {
@@ -45,9 +47,9 @@
 						?>
 							<div class="col-9 text-right p-0">
 								<span class="username"><?= $_SESSION["surname"]. ' ' . $_SESSION["name"] ?></span><br/>
-								<a href="?mode=admin&action=editProfile">Profil</a> - <a href="?mode=admin&action=disconnect">Deconnexion</a>	
+								<a href="admin/editProfile">Profil</a> - <a href="admin/disconnect">Deconnexion</a>	
 							</div>
-							<div class="col-3"><img src="./public/assets/img/avatars/<?= $_SESSION["avatar"] ?>" /></div>
+							<div class="col-3"><img src="http://localhost/forteroche/public/assets/img/avatars/<?= $_SESSION["avatar"] ?>" /></div>
 						<?php
 						}
 						?>

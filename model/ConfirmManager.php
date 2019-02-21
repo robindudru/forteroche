@@ -1,8 +1,8 @@
 <?php 
-
 namespace Model;
 
-class ConfirmManager {
+class ConfirmManager
+{
 	private $message;
 	private $url;
 
@@ -37,16 +37,16 @@ class ConfirmManager {
     public function setUrl($type, $id)
     {
     	if ($type === 'approveComment') {
-    		$this->url = '?mode=admin&action=approveComment&id='.$id;
+    		$this->url = 'admin/approveComment/'.$id;
     	}
         if($type === 'deleteComment'){
-        	$this->url = '?mode=admin&action=deleteComment&id='.$id;
+        	$this->url = 'admin/deleteComment/'.$id;
         }
         if($type === 'trashArticle'){
-        	$this->url = '?mode=admin&action=trashArticle&id='.$id;
+        	$this->url = 'admin/trashArticle/'.$id;
         }
         if($type === 'deleteArticle'){
-        	$this->url = '?mode=admin&action=deleteArticle&id='.$id;
+        	$this->url = 'admin/deleteArticle/'.$id;
         }
 
         return $this;
@@ -68,11 +68,12 @@ class ConfirmManager {
         return $this->url;
     }
 
-    public function confirm($type, $id) {
+    public function confirm($type, $id)
+    {
     	$this->setMessage($type);
     	$this->setUrl($type, $id);
     	$message = $this->getMessage();
 		$url = $this->getUrl();
-		require_once('./view/backend/confirmView.php');
+		require_once './view/backend/confirmView.php';
 	}
 }

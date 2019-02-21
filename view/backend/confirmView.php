@@ -17,7 +17,7 @@ ob_start();
 				</p>
 				<div class="text-center">
 					<a href="<?= $url ?>"><button class="btn btn-dark mr-2">Oui</button></a>
-					<a href="?mode=admin"><button class="btn btn-dark ml-2">Non</button></a>
+					<a href="admin"><button class="btn btn-dark ml-2">Non</button></a>
 				</div>
 			</div>
 		</div>
@@ -27,4 +27,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

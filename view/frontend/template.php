@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<base href="http://localhost/forteroche/">
 		<title>Billet simple pour l'Alaska - <?= $title ?></title>
 		<meta name="description" content="Billet simple pour l'Alaska, le nouveau livre de Jean Forteroche publié en ligne épisodes par épisodes !">
 	  	<meta property="og:title" content="Billet Simple pour l'Alaska - Le livre en ligne de Jean Forteroche" />
@@ -10,7 +11,7 @@
 		<meta property="og:url" content="http://www.robindupontdruaux.fr/forteroche/" />
 		<meta property="og:image" content="./public/assets/img/logo.png" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<link rel="stylesheet" href="./public/css/style.css">
+		<link rel="stylesheet" href="http://localhost/forteroche/public/css/style.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -30,7 +31,7 @@
 		<div class="row no-gutters">
 			<div class="col-6 h-100">
 				<header class="row mb-4 top-header">
-					<h1><a href="index.php">BILLET SIMPLE POUR L'ALASKA</a></h1>
+					<h1><a href="">BILLET SIMPLE POUR L'ALASKA</a></h1>
 				</header>
 			</div>
 			<div class="col-6 h-100 top-right-header">
@@ -58,8 +59,8 @@
 						<span id="prev"><a href="#"><i class="fas fa-chevron-left mr-1 ml-4"></i> PAGE PRECEDENTE</a></span>
 					</div>
 					<div class="col-6 offset-3">
-						<?php if($prevId !== 'last') { ?>
-						<a href="?action=article&id=<?= $prevId ?>">CHAPITRE PRECEDENT</a>
+						<?php if($prevArticle !== 'first') { ?>
+						<a href="article--<?= $prevArticle['title'] ?>-<?= $prevArticle['id'] ?>">CHAPITRE PRECEDENT</a>
 						<?php } ?>
 					</div>
 					<?php } 
@@ -72,8 +73,8 @@
 				<footer class="row mb-4 footer-right no-gutters pt-4">
 					<?php if (isset($nav)) { ?>
 					<div class="col-6">
-						<?php if($nextId !== 'last') { ?>
-							<a href="?action=article&id=<?= $nextId ?>">CHAPITRE SUIVANT</a>
+						<?php if($nextArticle !== 'last') { ?>
+							<a href="article--<?= $nextArticle['title'] ?>-<?= $nextArticle['id'] ?>">CHAPITRE SUIVANT</a>
 						<?php } ?>
 					</div>
 					<div class= "col-3 offset-3">
@@ -81,7 +82,7 @@
 					</div>
 					<?php }
 					else { ?>
-						<h2>(c) <?= $admin->getSurname() . ' ' . $admin->getName() ?> - 2019</h2>
+						<h2>(c) <?= $admin->getSurname() . ' ' . $admin->getName() ?> - 2019 | <a href="admin">Espace Administration</a></h2>
 					<?php } ?>
 				</footer>
 			</div>

@@ -7,7 +7,7 @@ ob_start();
 		<h1 class="admin-section-title mt-5 mx-3">Editer un article</h1>
 		<hr class="mx-3 my-0"/>
 		<div class="row no-gutters">
-			<form method="post" class="article-form ml-3" action="?mode=admin&action=editArticle&id=<?= $_GET['id'] ?>">
+			<form method="post" class="article-form ml-3" action="admin/editArticle/<?= $_GET['id'] ?>">
 				<div class="input-group mb-3 mt-3">
 					<span class="input-group-text">Titre</span>
 					<input type="text" class="form-control" name="title" value="<?= $article->getTitle() ?>" required>
@@ -39,4 +39,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('template.php');
+require_once 'template.php';

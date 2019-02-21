@@ -230,6 +230,11 @@ a:hover {
     display: none; 
 }
 
+.chapter-title {
+	font-family: 'ostrich_sansmedium', Arial;
+	font-size: 3vw;
+}
+
 .article-comment:nth-child(odd){
 	background-color: #efefef;
 }

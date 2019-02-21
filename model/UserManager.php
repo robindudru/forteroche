@@ -1,11 +1,12 @@
 <?php 
-
 namespace Model;
 
-require_once('Manager.php');
+require_once 'Manager.php';
 
-class UserManager extends Manager {
-	public function login() {
+class UserManager extends Manager
+{
+	public function login()
+	{
 		$username = StringManager::normalize((string)$_POST['username']);
 		$password = StringManager::normalize((string)$_POST['password']);
 		$db = $this->dbConnect();
@@ -30,7 +31,8 @@ class UserManager extends Manager {
 		}
 	}
 
-	public function getProfile(){
+	public function getProfile()
+	{
 		$username = $_SESSION['username'];
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT * FROM users WHERE username = ?');
@@ -45,7 +47,8 @@ class UserManager extends Manager {
 		}
 	}
 
-	public function getAdminInfos(){
+	public function getAdminInfos()
+	{
 		$db = $this->dbConnect();
 		$req = $db->prepare("SELECT * FROM users WHERE role = 'admin'");
 		$req->execute();
@@ -59,7 +62,8 @@ class UserManager extends Manager {
 		}
 	}
 
-	public function editProfile(){
+	public function editProfile()
+	{
 		$id = (int)$_POST['id'];
 		$username = StringManager::normalize((string)$_POST['username']);
 		$surname = trim((string)$_POST['surname']);

@@ -10,6 +10,17 @@ class Pager {
 		const _this = this;
 		$('#prev').on('click', () => {_this.prev()});
 		$('#next').on('click', () => {_this.next()});
+		$(window).keyup((e) => {
+			switch (e.key) {
+				case 'ArrowLeft':
+					e.preventDefault();
+					_this.prev();
+					break;
+				case 'ArrowRight':
+					e.preventDefault();
+					_this.next();
+			}
+		});
 	}
 
 	prev() {

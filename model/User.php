@@ -1,8 +1,8 @@
 <?php
-
 namespace Model;
 
-class User {
+class User
+{
 	private $id;
 	private $username;
 	private $password;
@@ -13,7 +13,8 @@ class User {
 	private $facebook;
 	private $instagram;
 
-	public function __construct($data){
+	public function __construct($data)
+    {
 		$this->setId($data['id']);
 		$this->setUsername($data['username']);
 		$this->setPassword($data['password']);

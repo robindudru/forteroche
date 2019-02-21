@@ -1,25 +1,50 @@
 <?php
-
 namespace Model;
 
-class Comment{
-	private $id;
-	private $author;
-	private $content;
-	private $articleId;
-	private $articleTitle;
-	private $signaled;
+class Comment
+{
+    /**
+    * @var int $id
+    */
+    private $id;
+    /**
+    * @var  string $author
+    */
+    private $author;
+    /**
+    * @var  string $content
+    */
+    private $content;
+    /**
+    * @var  date $date
+    */
+    private $date;
+    /**
+    * @var  int $articleId
+    */
+   private $articleId;
+    /**
+    * @var  string $articleTitle
+    */
+    private $articleTitle;
+    /**
+    * @var  int $signaled
+    */
+    private $signaled;
 
-	public function __construct(array $data) {
+	public function __construct(array $data)
+    {
 		$this->setId($data['id']);
 		$this->setAuthor($data['author']);
 		$this->setContent($data['content']);
+        $this->setDate($data['date']);
 		$this->setArticleId($data['article_id']);
 		$this->setSignaled($data['signaled']);
 	}
 
+
     /**
-     * @return mixed
+     * @return int $id
      */
     public function getId()
     {
@@ -27,7 +52,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      *
      * @return self
      */
@@ -39,7 +64,7 @@ class Comment{
     }
 
     /**
-     * @return mixed
+     * @return  string $author
      */
     public function getAuthor()
     {
@@ -47,7 +72,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $author
+     * @param  string $author
      *
      * @return self
      */
@@ -59,7 +84,7 @@ class Comment{
     }
 
     /**
-     * @return mixed
+     * @return  string $content
      */
     public function getContent()
     {
@@ -67,7 +92,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $content
+     * @param  string $content
      *
      * @return self
      */
@@ -79,7 +104,27 @@ class Comment{
     }
 
     /**
-     * @return mixed
+     * @return  date $date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param  date $date
+     *
+     * @return self
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * @return  int $articleId
      */
     public function getArticleId()
     {
@@ -87,7 +132,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $articleId
+     * @param  int $articleId
      *
      * @return self
      */
@@ -99,7 +144,7 @@ class Comment{
     }
 
     /**
-     * @return mixed
+     * @return  string $articleTitle
      */
     public function getArticleTitle()
     {
@@ -107,7 +152,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $articleTitle
+     * @param  string $articleTitle
      *
      * @return self
      */
@@ -119,7 +164,7 @@ class Comment{
     }
 
     /**
-     * @return mixed
+     * @return  int $signaled
      */
     public function getSignaled()
     {
@@ -127,7 +172,7 @@ class Comment{
     }
 
     /**
-     * @param mixed $signaled
+     * @param  int $signaled
      *
      * @return self
      */

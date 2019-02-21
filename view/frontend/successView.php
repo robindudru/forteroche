@@ -16,7 +16,7 @@ ob_start();
 					<?= $message ?>
 				</p>
 				<div class="text-center">
-					<a href="?action=article&id=<?= $_GET['id'] ?>"><button class="btn btn-dark">Retour</button></a>
+					<a href="javascript:history.back()"><button class="btn btn-dark">Retour</button></a>
 				</div>
 			</div>
 		</div>
@@ -26,4 +26,4 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-require_once('./view/backend/template.php');
+require_once './view/backend/template.php';

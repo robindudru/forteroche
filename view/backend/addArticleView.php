@@ -7,7 +7,7 @@ ob_start();
 		<h1 class="admin-section-title mt-5 mx-3">Rediger un chapitre</h1>
 		<hr class="mx-3 my-0"/>
 		<div class="row no-gutters">
-			<form method="post" class="article-form ml-3" action="?mode=admin&action=addArticle">
+			<form method="post" class="article-form ml-3" action="admin/addArticle">
 				<div class="input-group mb-3 mt-3">
 					<span class="input-group-text">Titre</span>
 					<input type="text" class="form-control" name="title" required>

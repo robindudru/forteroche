@@ -1,11 +1,12 @@
 <?php
-
 namespace Model;
 
-class CommentManager extends Manager {
+class CommentManager extends Manager
+{
 	private $lastCommentsArray;
 
-	public function getLastComments() {
+	public function getLastComments()
+	{
 		$this->lastCommentsArray = [];
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT * FROM comments ORDER BY id DESC LIMIT 6');
@@ -18,7 +19,8 @@ class CommentManager extends Manager {
 		return $this->lastCommentsArray;
 	}
 
-	public function getComments($articleId) {
+	public function getComments($articleId)
+	{
 		$this->commentsArray = [];
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT * FROM comments WHERE article_id = ? ORDER BY id DESC');
@@ -31,7 +33,8 @@ class CommentManager extends Manager {
 		return $this->commentsArray;
 	}
 
-	public function getArticleTitle($commentsArray) {
+	public function getArticleTitle($commentsArray)
+	{
 		$articleManager = new ArticleManager();
 		foreach($commentsArray as $comment) {
 			$article = $articleManager->getArticle($comment->getArticleId());
@@ -40,14 +43,16 @@ class CommentManager extends Manager {
 		}
 	}
 
-	public function totalComments($articleId) {
+	public function totalComments($articleId)
+	{
 		$db = $this->dbConnect();
 		$req = $db->query("SELECT COUNT(id) FROM comments WHERE article_id = '$articleId'")->fetchColumn(); 
 		return $req;
 	}
 
 	public function add() {
-		if (!empty($_POST['username']) && !empty($_POST['content'])) {
+		if (!empty($_POST['username']) && !empty($_POST['content']))
+		{
 			$values = [
 				'author' => (string)$_POST['username'],
 				'content' => $_POST['content'],
@@ -64,7 +69,8 @@ class CommentManager extends Manager {
 		}
 	}
 
-	public function approve($id) {
+	public function approve($id)
+	{
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE comments SET moderated = 1 WHERE id = ?');
 		if (!$req->execute(array($id))) {
@@ -73,7 +79,8 @@ class CommentManager extends Manager {
 		$req->closeCursor();
 	}
 
-	public function delete($id) {
+	public function delete($id)
+	{
 		$db = $this->dbConnect();
 		$req = $db->prepare('DELETE FROM comments WHERE id = ?');
 		if (!$req->execute(array($id))) {
@@ -82,7 +89,8 @@ class CommentManager extends Manager {
 		$req->closeCursor();
 	}
 
-	public function signalComment($id) {
+	public function signalComment($id)
+	{
 		$db = $this->dbConnect();
 		$req = $db->prepare('UPDATE comments SET signaled = signaled + 1 WHERE id = ?');
 		if (!$req->execute(array($id))) {
@@ -91,7 +99,8 @@ class CommentManager extends Manager {
 		$req->closeCursor();
 	}
 
-	public function getSignaled(){
+	public function getSignaled()
+	{
 		$this->signaledArray = [];
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT * FROM comments WHERE signaled > 0 AND moderated = 0 ORDER BY signaled DESC');
