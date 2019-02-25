@@ -20,18 +20,18 @@ ob_start(); ?>
 </div>
 
 <div class="modal fade" id="article-comments" tabindex="-1" role="dialog" aria-labelledby="commentaires" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title comments-title">Commentaires</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-0 p-0">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title comments-title">Commentaires</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+              <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-0 p-0">
         <?php
         foreach ($comments as $comment) { 
-        $commentDate = new \DateTime($comment->getDate()); ?>
+            $commentDate = new \DateTime($comment->getDate()); ?>
 			<div class="article-comment p-3"> 
         		<span class="comment-author"><?= $comment->getAuthor() ?></span><a title="Signaler ce commentaire" href="article-<?= $_GET['id'] ?>signal<?= $comment->getId() ?>"><i class="fas fa-exclamation-circle ml-2"></i></a><br />
             <span class="text-muted">le <?= $commentDate->format('d/m/Y \à H:i') ?></span><br/>

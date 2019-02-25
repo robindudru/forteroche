@@ -64,22 +64,31 @@ try {
 			throw new \Exception('Mode inconnu');
 		}
 	}
-
 	else if (isset($_GET['action'])) {
-		if ($_GET['action'] == 'home') {
-			$frontController->frontPage();
+		if (isset ($_COOKIE['enter'])) {
+			if ($_GET['action'] === 'home') {
+				$frontController->frontPage();
+			}
+			else if ($_GET['action'] === 'article') {
+				if (isset($_GET['id']) && $_GET['id'] > 0) {
+					$frontController->article();
+				}
+				else {
+					throw new \Exception ('L\'identifiant ne peut pas être négatif.');
+				}
+			}
 		}
-		else if ($_GET['action'] == 'article') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				$frontController->article();
-			}
-			else {
-				throw new \Exception ('L\'identifiant ne peut pas être négatif.');
-			}
+		else {
+			$frontController->splashScreen();
 		}
 	}
 	else {
-		$frontController->frontPage();
+		if (isset($_COOKIE['enter'])) {
+			$frontController->frontPage();
+		}
+		else {
+			$frontController->splashScreen();
+		}
 	}
 }
 

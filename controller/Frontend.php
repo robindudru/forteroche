@@ -3,6 +3,17 @@ namespace Controller;
 
 class Frontend extends Common
 {
+    public function splashScreen()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['enter'] === 'enter') {
+            setCookie('enter', 'enter', time() + 7*24*3600, null, null, false, true);
+            header('Location:home');
+        }
+        else {
+            require_once './view/frontend/splashView.php';
+        }
+    }
+
     public function frontPage()
     {
         $articles = $this->articleManager->getArticles('published');

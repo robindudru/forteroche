@@ -178,6 +178,36 @@ a:hover {
 	font-weight: bold!important;
 }
 
+/*####################
+#####Splashscreen#####
+####################*/
+
+#splashscreen {
+	background-image: url('./../assets/img/alaska.jpg');
+	background-size: cover;
+	min-height: 100%;
+}
+
+#splashscreen h1, #splashscreen h2 {
+	font-family: 'ostrich_sansmedium', Arial;
+	color: white;
+	text-shadow: 1px 1px black;
+}
+
+#splashscreen h1 {
+	font-size: 6vw;
+}
+
+#splashscreen h2 {
+	font-size: 4vw;
+}
+
+#splashscreen button {
+	font-family: 'ostrich_sansmedium', Arial;
+	color:black;
+	font-size: 1.5vw;
+}
+
 /*#################
 #####Main Page#####
 ######Frontend#####
