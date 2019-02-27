@@ -8,9 +8,7 @@ class CommentManager extends Manager
 	public function getLastComments()
 	{
 		$this->lastCommentsArray = [];
-		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM comments ORDER BY id DESC LIMIT 6');
-		$req->execute();
+		$req = $this->reqExec('SELECT * FROM comments ORDER BY id DESC LIMIT 6');
 		while ($data = $req->fetch()){
 			$comment = new Comment($data);
 			array_push($this->lastCommentsArray, $comment);
@@ -58,9 +56,8 @@ class CommentManager extends Manager
 				'content' => $_POST['content'],
 				'article_id' => (int)$_GET['id'],
 			];
-			$db = $this->dbConnect();
-			$req = $db->prepare('INSERT INTO comments (author, content, article_id) VALUES (:author, :content, :article_id)');
-			if (!$req->execute($values)) {
+			$req = $this->reqArrayPrepare('INSERT INTO comments (author, content, article_id) VALUES (:author, :content, :article_id)', $values);
+			if (!$req) {
 				throw new \Exception('Erreur lors de l\'ajout du commentaire.');
 			}
 		}
@@ -71,9 +68,8 @@ class CommentManager extends Manager
 
 	public function approve($id)
 	{
-		$db = $this->dbConnect();
-		$req = $db->prepare('UPDATE comments SET moderated = 1 WHERE id = ?');
-		if (!$req->execute(array($id))) {
+		$req = $this->reqSinglePrepare('UPDATE comments SET moderated = 1 WHERE id = ?', $id);
+		if (!$req) {
 			throw new \Exception('Erreur lors de l\'approbation du commentaire');
 		}
 		$req->closeCursor();
@@ -81,9 +77,8 @@ class CommentManager extends Manager
 
 	public function delete($id)
 	{
-		$db = $this->dbConnect();
-		$req = $db->prepare('DELETE FROM comments WHERE id = ?');
-		if (!$req->execute(array($id))) {
+		$req = $this->reqSinglePrepare('DELETE FROM comments WHERE id = ?', $id);
+		if (!$req) {
 			throw new \Exception('Erreur lors de la suppresion du commentaire');
 		}
 		$req->closeCursor();
@@ -91,9 +86,8 @@ class CommentManager extends Manager
 
 	public function signalComment($id)
 	{
-		$db = $this->dbConnect();
-		$req = $db->prepare('UPDATE comments SET signaled = signaled + 1 WHERE id = ?');
-		if (!$req->execute(array($id))) {
+		$req = $this->reqSinglePrepare('UPDATE comments SET signaled = signaled + 1 WHERE id = ?', $id);
+		if (!$req) {
 			throw new \Exception('Erreur lors du signalement du commentaire');
 		}
 		$req->closeCursor();
@@ -102,9 +96,7 @@ class CommentManager extends Manager
 	public function getSignaled()
 	{
 		$this->signaledArray = [];
-		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM comments WHERE signaled > 0 AND moderated = 0 ORDER BY signaled DESC');
-		$req->execute();
+		$req = $this->reqExec('SELECT * FROM comments WHERE signaled > 0 AND moderated = 0 ORDER BY signaled DESC');
 		while ($data = $req->fetch()){
 			$comment = new Comment($data);
 			array_push($this->signaledArray, $comment);

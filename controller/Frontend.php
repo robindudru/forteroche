@@ -39,7 +39,7 @@ class Frontend extends Common
             $nextArticle = $this->articleManager->getNextArticle($_GET['id']);
             $prevArticle = $this->articleManager->getPrevArticle($_GET['id']);
             $comments = $this->commentManager->getComments($_GET['id']);
-             $admin = $this->userManager->getAdminInfos();
+            $admin = $this->userManager->getAdminInfos();
             require_once './view/frontend/articleView.php';
         }
     }

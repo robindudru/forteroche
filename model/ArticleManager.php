@@ -8,9 +8,7 @@ class ArticleManager extends Manager
     public function getArticles($status)
     {
         $this->articlesArray = [];
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM articles WHERE status = ? ORDER BY id');
-        $req->execute(array($status));
+        $req = $this->reqSinglePrepare('SELECT * FROM articles WHERE status = ? ORDER BY id', $status);
         while ($data = $req->fetch()){
             $article = new Article($data);
             array_push($this->articlesArray, $article);
@@ -21,9 +19,7 @@ class ArticleManager extends Manager
 
     public function getArticle($articleId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM articles WHERE id = ?');
-        $req->execute(array($articleId));
+        $req = $this->reqSinglePrepare('SELECT * FROM articles WHERE id = ?', $articleId);
         $data = $req->fetch();
         if (!empty($data)) {
             $article = new Article($data);
@@ -36,9 +32,7 @@ class ArticleManager extends Manager
 
     public function getNextArticle($articleId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare("SELECT id, title FROM articles WHERE id = (SELECT min(id) from articles WHERE id > ?) AND status = 'published'");
-        $req->execute(array($articleId));
+        $req = $this->reqSinglePrepare("SELECT id, title FROM articles WHERE id = (SELECT min(id) from articles WHERE id > ?) AND status = 'published'", $articleId);
         $data = $req->fetch();
         if (!empty($data)) {
             $data = array("id" => $data['id'], "title" => StringManager::slug($data['title']));
@@ -51,9 +45,7 @@ class ArticleManager extends Manager
 
     public function getPrevArticle($articleId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare("SELECT id, title FROM articles WHERE id = (SELECT max(id) from articles WHERE id < ?) AND status = 'published'");
-        $req->execute(array($articleId));
+        $req = $this->reqSinglePrepare("SELECT id, title FROM articles WHERE id = (SELECT max(id) from articles WHERE id < ?) AND status = 'published'", $articleId);
         $data = $req->fetch();
         if (!empty($data)) {
             $data = array("id" => $data['id'], "title" => StringManager::slug($data['title']));
@@ -72,9 +64,8 @@ class ArticleManager extends Manager
                 'content' => $_POST['content'],
                 'status' => $_POST['status']
             ];
-            $db = $this->dbConnect();
-            $req = $db->prepare('INSERT INTO articles (title, content, status) VALUES (:title, :content, :status)');
-            if (!$req->execute($values)) {
+            $req = $this->reqArrayPrepare('INSERT INTO articles (title, content, status) VALUES (:title, :content, :status)', $values);
+            if (!$req) {
                 throw new \Exception('Erreur lors de l\'ajout de l\'article');
             }
         }
@@ -92,30 +83,25 @@ class ArticleManager extends Manager
             'now' => date("Y-m-d H:i:s"),
             'id' => (int)$_GET['id']
         ];
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE articles SET title=:title, content=:content, updated=:now, status=:status WHERE id=:id');
-        if (!$req->execute($values)) {
+        $req = $this->reqArrayPrepare('UPDATE articles SET title=:title, content=:content, updated=:now, status=:status WHERE id=:id', $values);
+        if (!$req) {
             throw new \Exception ('Erreur lors de l\'édition de l\'article');
         }
     }
 
     public function trash()
     {
-        $articleId = (int)$_GET['id'];
-        $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE articles SET status = "trash" WHERE id= ?');
-        if (!$req->execute(array($articleId))) {
+        $req = $this->reqSinglePrepare('UPDATE articles SET status = "trash" WHERE id= ?', (int)$_GET['id']);
+        if (!$req) {
             throw new \Exception ('Erreur lors de la mise en corbeille de l\'article');
         }
     }
 
     public function delete()
     {
-        $articleId = (int)$_GET['id'];
-        $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM articles WHERE id = ?');
-        $req2 = $db->prepare('DELETE FROM comments WHERE article_id = ?');
-        if (!$req->execute(array($articleId)) || !$req2->execute(array($articleId))) {
+        $req = $this->reqSinglePrepare('DELETE FROM articles WHERE id = ?', (int)$_GET['id']);
+        $req2 = $this->reqSinglePrepare('DELETE FROM comments WHERE article_id = ?', (int)$_GET['id']);
+        if (!$req || !$req2) {
 		    throw new \Exception('Erreur lors de la suppression de l\'article');
         }
     }

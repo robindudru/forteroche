@@ -9,9 +9,7 @@ class UserManager extends Manager
 	{
 		$username = StringManager::normalize((string)$_POST['username']);
 		$password = StringManager::normalize((string)$_POST['password']);
-		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM users WHERE username = ?');
-		$req->execute(array($username));
+		$req = $this->reqSinglePrepare('SELECT * FROM users WHERE username = ?', $username);
 		$data = $req->fetch();
 		if (!empty($data)) {
 			if (password_verify($password, $data['password'])) {
@@ -33,10 +31,7 @@ class UserManager extends Manager
 
 	public function getProfile()
 	{
-		$username = $_SESSION['username'];
-		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT * FROM users WHERE username = ?');
-		$req->execute(array($username));
+		$req = $this->reqSinglePrepare('SELECT * FROM users WHERE username = ?', $_SESSION['username']);
 		$data = $req->fetch();
 		if (!empty($data)) {
 			$user = new User($data);
@@ -49,9 +44,7 @@ class UserManager extends Manager
 
 	public function getAdminInfos()
 	{
-		$db = $this->dbConnect();
-		$req = $db->prepare("SELECT * FROM users WHERE role = 'admin'");
-		$req->execute();
+		$req = $this->reqExec("SELECT * FROM users WHERE role = 'admin'");
 		$data = $req->fetch();
 		if(!empty($data)) {
 			$user = new User($data);
@@ -76,7 +69,6 @@ class UserManager extends Manager
 		$facebook = StringManager::normalize((string)$_POST['facebook']);
 		$instagram = StringManager::normalize((string)$_POST['instagram']);
 
-		$db = $this->dbConnect();
 		if (!empty($username) && !empty($surname) && !empty($name)) {
 			if (isset($password)) {
 				if($password != $passwordConfirm) {
@@ -94,7 +86,7 @@ class UserManager extends Manager
 						'twitter' => $twitter,
 						'facebook' => $facebook
 					];
-					$req = $db->prepare('UPDATE users SET username=:username, password=:password, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id');	
+					$req =	$this->reqArrayPrepare('UPDATE users SET username=:username, password=:password, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id', $values);
 				}
 			}
 			else {
@@ -107,13 +99,13 @@ class UserManager extends Manager
 					'twitter' => $twitter,
 					'facebook' => $facebook
 				];
-				$req = $db->prepare('UPDATE users SET username=:username, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id');	
+				$req = $this->reqArrayPrepare('UPDATE users SET username=:username, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id', $values);
 			}
 		}
 		else {
 			throw new \Exception('Au moins un des champs obligatoires est vide.');
 		}
-		if (!$req->execute($values)) {
+		if (!$req) {
 			throw new \Exception('Erreur lors de la mise à jour du profil');
 		}
 		else {

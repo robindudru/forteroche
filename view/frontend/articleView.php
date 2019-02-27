@@ -15,7 +15,7 @@ ob_start(); ?>
       <?= $title ?>
     </h1>
     <a href="" class="d-block d-lg-none" data-toggle="modal" data-target="#article-comments">
-      <i class="fas fa-comment ml-3 mr-1"></i><?= $article->getTotalComments() ?>
+      <i class="fas fa-comment ml-3 mr-1"></i><?= $totalComments ?>
     </a>
   </div>
   <span class="text-muted pl-lg-5">publié le <?php echo $date->format('d/m/Y \à H:i'); if($date->format('d/m/Y \à H:i') !== $updated->format('d/m/Y \à H:i')) {echo ' édité le ' . $updated->format('d/m/Y \à H:i');} ?></span>
