@@ -5,7 +5,7 @@
 body, html {
 	height:100%;
 	width:100%;
-	overflow-y: hidden;
+	overflow: hidden;
 }
 
 body a, body a:visited, body a:active, body a:link {
@@ -23,7 +23,7 @@ header {
 }
 
 footer {
-	height:3vh;
+	height:2vh;
 }
 
 @font-face {
@@ -56,12 +56,11 @@ footer {
 	width: 100%!important;
 	text-align: center!important;
 	font-family: 'ostrich_sansmedium', Arial!important;
-	font-size: 1vw!important;
+	font-size: 5vw!important;
 }
 
 .top-right-header {
 	height: 100%;
-	border-left: 1px solid lightgrey;
 }
 
 .footer-wrapper {
@@ -107,13 +106,38 @@ footer {
 	text-align: left!important;
 }
 
+#hamburger {
+	position: absolute;
+	z-index: 900;
+	right: 3vw;
+	font-size: 6vw;
+}
+
+#drawer-menu {
+	position: absolute;
+	right:0;
+	width:0;
+	height:100vh;
+	background-color: white;
+	border-left: 1px solid lightgrey;
+	z-index: 998;
+}
+
+#drawer-close {
+	font-size: 6vw;
+}
+
+.phone-footer {
+	font-size: 4vw;
+}
+
 .main-content {
 	height:88vh;
 }
 
 .neutral-xl-title {
 	font-family: Arial Black;
-	font-size: 1.8vw;
+	font-size: 5vw;
 }
 
 .neutral-md-title {
@@ -146,17 +170,17 @@ footer {
 }
 
 #splashscreen h1 {
-	font-size: 6vw;
+	font-size: 12vw;
 }
 
 #splashscreen h2 {
-	font-size: 4vw;
+	font-size: 7vw;
 }
 
 #splashscreen button {
 	font-family: 'ostrich_sansmedium', Arial;
 	color:black;
-	font-size: 1.5vw;
+	font-size: 5vw;
 }
 
 /*#################
@@ -199,6 +223,10 @@ footer {
 	font-size: 4vw;
 }
 
+#chapter-list {
+	margin: 0 5vw;
+}
+
 #chapter-list h2 {
 	font-family: 'ostrich_sansmedium', Arial;
 	float:left;
@@ -229,13 +257,23 @@ footer {
 .article-two-pages {
 	height:94vh;
 	max-width:100%;
-	columns: 2;
 	overflow-x: scroll;
 }
 
 .article-two-pages p {
 	text-align: justify;
-	padding: 2vh 2.5vw 2vh 2.5vw;
+	padding: 0 5vw;
+}
+
+.article-two-pages h1 {
+	font-size: 10vw;
+	padding-left:4vw;
+	margin-bottom:0;
+}
+
+.article-two-pages .text-muted {
+	padding-left: 4vw;
+	font-size: 3vw;
 }
 
 .article-two-pages::-webkit-scrollbar { 
@@ -257,7 +295,7 @@ footer {
 
 .comments-title {
 	font-family: 'ostrich_sansmedium', Arial!important;
-	font-size: 1.5vw;
+	font-size: 8vw;
 }
 
 .comment-author {

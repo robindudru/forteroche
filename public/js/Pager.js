@@ -3,7 +3,7 @@ class Pager {
 		this.navListener();
 		this.maxScrollLeft = ($('.article-two-pages')[0].scrollWidth - $('.article-two-pages')[0].clientWidth);
 		($('.article-two-pages').scrollLeft() === 0) ? $('#prev').css('opacity', '0', 'pointer-events', 'none') : $('#prev').css('opacity', '1');
-		($('.article-two-pages').scrollLeft() === this.maxScrollLeft) ? $('#next').css('opacity', '0') : $('#next').css('opacity', '1');		
+		($('.article-two-pages').scrollLeft() === this.maxScrollLeft) ? $('#next').css('opacity', '0', 'pointer-events', 'none') : $('#next').css('opacity', '1');		
 	}
 
 	navListener() {
@@ -26,7 +26,7 @@ class Pager {
 	prev() {
 		const _this = this;
 		$('.article-two-pages').fadeTo(600, 0, () => {
-			$('.article-two-pages').scrollLeft(($('.article-two-pages').scrollLeft() - $(document).innerWidth()- 16));
+			$('.article-two-pages').scrollLeft(($('.article-two-pages').scrollLeft() - $(document).innerWidth() - 16));
 			_this.checkStatus();
 		});
 		$('.article-two-pages').fadeTo(600, 1);
@@ -35,7 +35,7 @@ class Pager {
 	next() {
 		const _this = this;
 		$('.article-two-pages').fadeTo(600, 0, () => {
-			$('.article-two-pages').scrollLeft(($('.article-two-pages').scrollLeft() + $(document).innerWidth()+ 16));
+			$('.article-two-pages').scrollLeft(($('.article-two-pages').scrollLeft() + $(document).innerWidth() + 16));
 			_this.checkStatus();
 		});
 		$('.article-two-pages').fadeTo(600, 1);

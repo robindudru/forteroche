@@ -11,10 +11,12 @@
 		<meta property="og:url" content="http://www.robindupontdruaux.fr/forteroche/" />
 		<meta property="og:image" content="./public/assets/img/logo.png" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		<link rel="stylesheet" href="http://localhost/forteroche/public/css/style.css">
+		<link rel="stylesheet" media="(min-width: 993px)" href="http://localhost/forteroche/public/css/style.css">
+		<link rel="stylesheet" media="(min-width: 0px) and (max-width: 767px)" href="http://localhost/forteroche/public/css/style_smartphones.css">
+		<link rel="stylesheet" media="(min-width:768px) and (max-width: 992px)" href="http://localhost/forteroche/public/css/style_tablets.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=uhyykhime2vq6i59wnrvg33bjmuadk82qs7rw0jfiu26a5hm"></script>
 		<script>
@@ -28,13 +30,30 @@
 	</head>
 
 	<body class="container-fluid p-0 relative">
+		<div id="hamburger" class="d-block d-lg-none"><i class="fas fa-bars"></i></div>
+		<div id="drawer-menu" class="d-block d-lg-none">
+			<div id="drawer-close" class="d-block d-lg-none text-right mr-2 pr-1"><i class="fas fa-times"></i></div>
+			<div class="">
+				<?php 
+				foreach ($articles as $article){
+					$articleId = $article->getId();
+					$articleTitle = $article->getTitle();
+				?>
+				<div class="mx-3">
+					<h2><a href="article--<?= Model\StringManager::slug($articleTitle) ?>-<?= $articleId ?>"><?= $articleTitle ?></a></h2>
+				</div>
+				<?php
+				}
+				?>
+			</div>
+		</div>
 		<div class="row no-gutters">
-			<div class="col-6 h-100">
+			<div class="col-sm-12 col-lg-6 h-100">
 				<header class="row mb-4 top-header">
 					<h1><a href="">BILLET SIMPLE POUR L'ALASKA</a></h1>
 				</header>
 			</div>
-			<div class="col-6 h-100 top-right-header">
+			<div class="col-lg-6 d-none d-lg-block h-100 top-right-header">
 				<header class="row mb-4 top-header">
 					<h1>
 						<?= $pageTitle ?>
@@ -51,8 +70,8 @@
 			<?= $content ?>
 		</div>
 		<div class="row no-gutters relative footer-wrapper">
-			<div class="separator"></div>
-			<div class="col-6 h-100">
+			<div class="d-none d-lg-block separator"></div>
+			<div class="d-none d-lg-block col-lg-6 h-100">
 				<footer class="row no-gutters mb-4 footer-left pt-4">
 					<?php if (isset($nav)) { ?>
 					<div class="col-3">
@@ -69,7 +88,7 @@
 					<?php } ?>
 				</footer>
 			</div>
-			<div class="col-6 top-right-header">
+			<div class="d-none d-lg-block col-lg-6 top-right-header">
 				<footer class="row mb-4 footer-right no-gutters pt-4">
 					<?php if (isset($nav)) { ?>
 					<div class="col-6">
@@ -86,6 +105,16 @@
 					<?php } ?>
 				</footer>
 			</div>
+			<div class="d-block d-lg-none col-12 h-100">
+				<footer class="row mb-4 no-gutters pt-4 phone-footer d-flex justify-content-center align-content-center">
+					<span>(c) <?php if (isset($admin)){ echo $admin->getSurname() . ' ' . $admin->getName() . ' - '; } ?> 2019 | <a href="admin">Espace Administration</a></span>
+				</footer>
+			</div>
 		</div>
 	</body>
 </html>
+
+<script src="./public/js/Hamburger.js"></script>
+<script>
+	const hamburger = new Hamburger();
+</script>

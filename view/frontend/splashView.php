@@ -11,6 +11,8 @@
 		<meta property="og:url" content="http://www.robindupontdruaux.fr/forteroche/" />
 		<meta property="og:image" content="./public/assets/img/logo.png" />
 		<link rel="stylesheet" href="http://localhost/forteroche/public/css/style.css">
+		<link rel="stylesheet" media="(max-width: 768px)" href="http://localhost/forteroche/public/css/style_smartphones.css">
+		<link rel="stylesheet" media="(max-width: 992px)" href="http://localhost/forteroche/public/css/style_tablets.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 	</head>

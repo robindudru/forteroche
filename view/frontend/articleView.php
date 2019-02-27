@@ -8,12 +8,17 @@ $date = new \DateTime($article->getDate());
 $updated = new \DateTime($article->getUpdated());
 
 ob_start(); ?>
-<div class="separator"></div>
+<div class="d-none d-lg-block separator"></div>
 <div class="col-12 h-100 article-two-pages relative">
-	<h1 class="pl-5 chapter-title">
-	    <?= $title ?>
-	</h1>
-  <span class="text-muted pl-5">publié le <?php echo $date->format('d/m/Y \à H:i'); if($date->format('d/m/Y \à H:i') !== $updated->format('d/m/Y \à H:i')) {echo ' édité le ' . $updated->format('d/m/Y \à H:i');} ?></span>
+  <div class="d-flex">
+    <h1 class="pl-lg-5 chapter-title">
+      <?= $title ?>
+    </h1>
+    <a href="" class="d-block d-lg-none" data-toggle="modal" data-target="#article-comments">
+      <i class="fas fa-comment ml-3 mr-1"></i><?= $article->getTotalComments() ?>
+    </a>
+  </div>
+  <span class="text-muted pl-lg-5">publié le <?php echo $date->format('d/m/Y \à H:i'); if($date->format('d/m/Y \à H:i') !== $updated->format('d/m/Y \à H:i')) {echo ' édité le ' . $updated->format('d/m/Y \à H:i');} ?></span>
 	<p id="leftContent">
 		<?= $articleContent ?>
 	</p>
@@ -61,6 +66,6 @@ require_once 'template.php';
 
 <script src="./public/js/Pager.js"></script>
 <script>
-const pager = new Pager();
+  const pager = new Pager();
 </script>
 

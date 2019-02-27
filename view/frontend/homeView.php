@@ -2,10 +2,10 @@
 $pageTitle = 'TABLE DES MATIERES';
 
 ob_start(); ?>
-	<div class="col-6 h-100 px-5 left-page">
+	<div class="col-sm-12 col-lg-6 h-100 px-lg-5 left-page">
 		<nav id="chapter-list">
 			<span class="neutral-xl-title">Table des matières</span><br /><br />
-			<div class="d-flex flex-column mt-4">
+			<div class="d-flex flex-column mt-sm-1 mt-lg-4">
 				<?php 
 				foreach ($articles as $article){
 					$articleId = $article->getId();
@@ -29,7 +29,7 @@ ob_start(); ?>
 			</div>
 		</nav>
 	</div>
-	<div class="col-6 h-100 px-3 right-page">
+	<div class="d-none d-lg-block col-lg-6 h-100 px-3 right-page">
 		<span class="neutral-md-title">Derniers commentaires</span>
 		<div id="last-comments" class="fluid-container no-gutters">
 			<div class="row no-gutters">
@@ -74,3 +74,4 @@ ob_start(); ?>
 	
 <?php $content = ob_get_clean();
 require_once 'template.php';
+?>
