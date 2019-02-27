@@ -16,21 +16,21 @@ ob_start();
 				<div class="text-right">
 					<button type="submit" class="btn btn-dark">Valider</button>
 				</div>		
+			</div>
 		</div>
-	</div>
-	<aside class="col-4 pl-5">
-		<h1 class="admin-section-title mt-5 mx-3">STATUT DE L'ARTICLE</h1>
-		<hr class="mx-3 my-0"/>
-		<div class="row mx-2 mt-3 pr-3">
-    		<label class="class-form-label col-4" for="status"><b>Cet article doit être</b></label>
-    		<select class="form-control col-8" name="status">
-      			<option value="published">publié</option>
-		      	<option value="draft">un brouillon</option>
-		    </select>
-  		</div>
-		<div class="text-right pr-4 mt-3">
-					<button type="submit" class="btn btn-dark">Valider</button>
-		</div>
+		<aside class="col-4 pl-5">
+			<h1 class="admin-section-title mt-5 mx-3">STATUT DE L'ARTICLE</h1>
+			<hr class="mx-3 my-0"/>
+			<div class="row mx-2 mt-3 pr-3">
+				<label class="class-form-label col-4" for="status"><b>Cet article doit être</b></label>
+				<select class="form-control col-8" name="status">
+					<option value="published">publié</option>
+					<option value="draft">un brouillon</option>
+				</select>
+			</div>
+			<div class="text-right pr-4 mt-3">
+				<button type="submit" class="btn btn-dark">Valider</button>
+			</div>
 		</form>
 	</aside>
 </div>

@@ -27,11 +27,11 @@ footer {
 }
 
 @font-face {
-    font-family: 'ostrich_sansmedium';
-    src: url('../assets/fonts/ostrich-regular-webfont.woff2') format('woff2'),
-         url('../assets/fonts/ostrich-regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'ostrich_sansmedium';
+	src: url('../assets/fonts/ostrich-regular-webfont.woff2') format('woff2'),
+	url('../assets/fonts/ostrich-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 .relative {
@@ -239,7 +239,7 @@ footer {
 }
 
 .article-two-pages::-webkit-scrollbar { 
-    display: none; 
+	display: none; 
 }
 
 .chapter-title {

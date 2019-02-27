@@ -1,8 +1,18 @@
 <?php 
+/**
+ * Formats strings.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
+
 namespace Model;
 
 class StringManager
 {
+    /**
+     * @var array characters to replace for unaccented equivalent
+     */
     const UTF8 = array(
         '/[áàâãªäåæ]/u' => 'a',
         '/[ÁÀÂÃÄÅÆ]/u' => 'A',
@@ -37,6 +47,12 @@ class StringManager
         '/ /' => ' '
     );
 
+    /**
+     * Replaces accented characters for unaccentend ones, lowercases string and gets rid of any blank spaces
+     * 
+     * @param  string $string string to format
+     * @return  string formatted string
+     */
     public static function normalize($string)
     {
         $str = preg_replace(array_keys(self::UTF8), array_values(self::UTF8), $string);
@@ -44,12 +60,24 @@ class StringManager
         return $str;
     }
 
+    /**
+     * Lowercases string and replaces blank spaces for dashes
+     * 
+     * @param  string $string string to format
+     * @return  string formatted string
+     */
     public static function slug($string)
     {
       $str = strtolower(str_replace(' ', '-', $string));
       return $str;
     }
 
+    /**
+     * Replaces accented characters for unaccented ones
+     * 
+     * @param  string $string string to format
+     * @return  string formatted string
+     */
     public static function noAccents($string)
     {
         $str = preg_replace(array_keys(self::UTF8), array_values(self::UTF8), $string);

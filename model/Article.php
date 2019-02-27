@@ -1,16 +1,46 @@
 <?php 
+/**
+ * Model for Article, hydrated from data gathered from Article Manager.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
 namespace Model;
 
 use Model;
 
 class Article
 {
+    /**
+     * @var int
+     */
     private $id;
+    /**
+     * @var string
+     */
+    /**
+     * @var string
+     */
     private $title;
+    /**
+     * @var string
+     */
     private $content;
+    /**
+     * @var string
+     */
     private $status;
+    /**
+     * @var string
+     */
     private $date;
+    /**
+     * @var string
+     */
     private $updated;
+    /**
+     * @var int
+     */
     private $totalComments;
 
     public function __construct(array $data)
@@ -27,7 +57,7 @@ class Article
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -35,18 +65,19 @@ class Article
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      *
      * @return self
      */
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -54,18 +85,19 @@ class Article
     }
 
     /**
-     * @param mixed $title
+     * @param string $title
      *
      * @return self
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getContent()
     {
@@ -73,18 +105,19 @@ class Article
     }
 
     /**
-     * @param mixed $content
+     * @param string $content
      *
      * @return self
      */
     public function setContent($content)
     {
         $this->content = $content;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getStatus()
     {
@@ -92,18 +125,19 @@ class Article
     }
 
     /**
-     * @param mixed $status
+     * @param string $status
      *
      * @return self
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDate()
     {
@@ -111,18 +145,19 @@ class Article
     }
 
     /**
-     * @param mixed $date
+     * @param string $date
      *
      * @return self
      */
     public function setDate($date)
     {
         $this->date = $date;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUpdated()
     {
@@ -130,18 +165,19 @@ class Article
     }
 
     /**
-     * @param mixed $updated
+     * @param string $updated
      *
      * @return self
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getTotalComments()
     {
@@ -149,13 +185,14 @@ class Article
     }
 
     /**
-     * @param mixed $totalComments
+     * @param int $totalComments
      *
      * @return self
      */
     public function setTotalComments($totalComments)
     {
         $this->totalComments = $totalComments;
+
         return $this;
     }
 }

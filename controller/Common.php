@@ -1,4 +1,11 @@
 <?php
+/**
+ * Calls for different Managers instances to use in both controllers.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
+
 namespace Controller;
 
 use Model;

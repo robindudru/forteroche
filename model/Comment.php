@@ -1,50 +1,56 @@
 <?php
+/**
+ * Model for Comment, hydrated from data gathered from Comment Manager.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
+
 namespace Model;
 
 class Comment
 {
     /**
-    * @var int $id
+    * @var int
     */
     private $id;
     /**
-    * @var  string $author
+    * @var  string
     */
     private $author;
     /**
-    * @var  string $content
+    * @var  string
     */
     private $content;
     /**
-    * @var  date $date
+    * @var  string
     */
     private $date;
     /**
-    * @var  int $articleId
+    * @var  int
     */
-   private $articleId;
+    private $articleId;
     /**
-    * @var  string $articleTitle
+    * @var  string
     */
     private $articleTitle;
     /**
-    * @var  int $signaled
+    * @var  int
     */
     private $signaled;
 
-	public function __construct(array $data)
+    public function __construct(array $data)
     {
-		$this->setId($data['id']);
-		$this->setAuthor($data['author']);
-		$this->setContent($data['content']);
+        $this->setId($data['id']);
+        $this->setAuthor($data['author']);
+        $this->setContent($data['content']);
         $this->setDate($data['date']);
-		$this->setArticleId($data['article_id']);
-		$this->setSignaled($data['signaled']);
-	}
-
+        $this->setArticleId($data['article_id']);
+        $this->setSignaled($data['signaled']);
+    }
 
     /**
-     * @return int $id
+     * @return int
      */
     public function getId()
     {
@@ -64,7 +70,7 @@ class Comment
     }
 
     /**
-     * @return  string $author
+     * @return  string
      */
     public function getAuthor()
     {
@@ -84,7 +90,7 @@ class Comment
     }
 
     /**
-     * @return  string $content
+     * @return  string
      */
     public function getContent()
     {
@@ -104,7 +110,7 @@ class Comment
     }
 
     /**
-     * @return  date $date
+     * @return  string
      */
     public function getDate()
     {
@@ -112,7 +118,7 @@ class Comment
     }
 
     /**
-     * @param  date $date
+     * @param  string $date
      *
      * @return self
      */
@@ -124,7 +130,7 @@ class Comment
     }
 
     /**
-     * @return  int $articleId
+     * @return  int
      */
     public function getArticleId()
     {
@@ -144,7 +150,7 @@ class Comment
     }
 
     /**
-     * @return  string $articleTitle
+     * @return  string
      */
     public function getArticleTitle()
     {
@@ -164,7 +170,7 @@ class Comment
     }
 
     /**
-     * @return  int $signaled
+     * @return  int
      */
     public function getSignaled()
     {

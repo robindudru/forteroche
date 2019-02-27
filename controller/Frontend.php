@@ -1,8 +1,22 @@
 <?php
+/**
+ * Calls for needed methods depending on router's instructions.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
+
 namespace Controller;
 
 class Frontend extends Common
 {
+    /**
+     * Checks if user has already been greeted by splashscreen.
+     *
+     * If not, user is sent to Splashscreen. Entering the website will create a 7 days cookie.
+     *
+     * Else, user is sent to Homepage, as long as the cookie exists.
+     */
     public function splashScreen()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['enter'] === 'enter') {
@@ -13,7 +27,9 @@ class Frontend extends Common
             require_once './view/frontend/splashView.php';
         }
     }
-
+    /**
+     * Calls for required methods from needed Managers and sends to Homepage.
+     */
     public function frontPage()
     {
         $articles = $this->articleManager->getArticles('published');
@@ -22,7 +38,13 @@ class Frontend extends Common
         $admin = $this->userManager->getAdminInfos();
         require_once './view/frontend/homeView.php';
     }
-
+    /**
+     * Checks if comment is being posted or signaled.
+     *
+     * If so, Comment Manager add or signal method is called and user is sent to Success page.
+     *
+     * Else, required methods are called from needed Managers and user is sent to Article page.
+     */
     public function article()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

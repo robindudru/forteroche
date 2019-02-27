@@ -22,7 +22,7 @@ ob_start();
 			<?php }
 			else {
 				foreach ($publishedArticles as $article){
-				?>
+					?>
 					<div class="col-6 publishedArticle active">
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
@@ -51,7 +51,7 @@ ob_start();
 							</div>
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			if (empty($draftArticles)){ ?>
@@ -59,7 +59,7 @@ ob_start();
 			<?php }
 			else {
 				foreach ($draftArticles as $article){
-				?>
+					?>
 					<div class="col-6 draftArticle">
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
@@ -88,7 +88,7 @@ ob_start();
 							</div>
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			if (empty($trashArticles)){ ?>
@@ -96,7 +96,7 @@ ob_start();
 			<?php }
 			else {
 				foreach ($trashArticles as $article){
-				?>
+					?>
 					<div class="col-6 trashArticle">
 						<div class="card mx-3 mt-4">
 							<div class="card-header m-0 d-flex justify-content-between">
@@ -125,7 +125,7 @@ ob_start();
 							</div>
 						</div>
 					</div>
-				<?php
+					<?php
 				}
 			}
 			?>
@@ -135,36 +135,36 @@ ob_start();
 		<h1 class="admin-section-title mt-5 mx-3">Commentaires signales</h1>
 		<hr class="mx-3 my-0"/>
 		<?php 
-				foreach ($signaled as $comment){
-					$articleId = $comment->getArticleId();
-				?>
-					<div class="col-12 mt-4">
-						<div class="card mr-4">
-							<div class="card-header d-flex justify-content-between">
-								<?= $comment->getAuthor() ?>
-								<span class="card-subtitle text-muted small">
-									signalé <?= $comment->getSignaled() ?> fois 
-									<a title="Valider ce commentaire" href="admin/approveComment-<?= $comment->getId() ?>"><i class="fas fa-check-square ml-2"></i></a>
-									<a title="Supprimer ce commentaire" href="admin/deleteComment-<?= $comment->getId() ?>"><i class="fas fa-times ml-2"></i></a>
-								</span>
-							</div>
-							<div class="card-body">
-								<p class="card-text"><?= $comment->getContent() ?></p>
-							</div>
-						</div>
+		foreach ($signaled as $comment){
+			$articleId = $comment->getArticleId();
+			?>
+			<div class="col-12 mt-4">
+				<div class="card mr-4">
+					<div class="card-header d-flex justify-content-between">
+						<?= $comment->getAuthor() ?>
+						<span class="card-subtitle text-muted small">
+							signalé <?= $comment->getSignaled() ?> fois 
+							<a title="Valider ce commentaire" href="admin/approveComment-<?= $comment->getId() ?>"><i class="fas fa-check-square ml-2"></i></a>
+							<a title="Supprimer ce commentaire" href="admin/deleteComment-<?= $comment->getId() ?>"><i class="fas fa-times ml-2"></i></a>
+						</span>
 					</div>
-				<?php
-				}
-				?>
+					<div class="card-body">
+						<p class="card-text"><?= $comment->getContent() ?></p>
+					</div>
+				</div>
+			</div>
+			<?php
+		}
+		?>
 	</aside>
 </div>
 <?php
 
 $content = ob_get_clean();
 require_once 'template.php';
- ?>
+?>
 
- <script src="./public/js/ArticlesCategoriesNav.js"></script>
+<script src="./public/js/ArticlesCategoriesNav.js"></script>
 <script>
- const articlesNav = new ArticlesCategoriesNav();
+	const articlesNav = new ArticlesCategoriesNav();
 </script>

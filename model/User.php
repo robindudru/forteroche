@@ -1,33 +1,67 @@
 <?php
+/**
+ * Model for User, hydrated from data gathered from User Manager.
+ *
+ * @package    Forteroche
+ * @author     Robin Dupont-Druaux <contact@robindupontdruaux.fr>
+ */
+
 namespace Model;
 
 class User
 {
-	private $id;
-	private $username;
-	private $password;
-	private $surname;
-	private $name;
-	private $avatar;
-	private $twitter;
-	private $facebook;
-	private $instagram;
+    /**
+     * @var  int
+     */
+    private $id;
+    /**
+     * @var  string
+     */
+    private $username;
+    /**
+     * @var  string
+     */
+    private $password;
+    /**
+     * @var  string
+     */
+    private $surname;
+    /**
+     * @var  string
+     */
+    private $name;
+    /**
+     * @var  string
+     */
+    private $avatar;
+    /**
+     * @var  string
+     */
+    private $twitter;
+    /**
+     * @var  string
+     */
+    private $facebook;
+    /**
+     * @var  string
+     */
+    private $instagram;
 
-	public function __construct($data)
+    public function __construct($data)
     {
-		$this->setId($data['id']);
-		$this->setUsername($data['username']);
-		$this->setPassword($data['password']);
-		$this->setSurname($data['surname']);
-		$this->setName($data['name']);
-		$this->setAvatar($data['avatar']);
-		$this->setTwitter($data['twitter']);
-		$this->setFacebook($data['facebook']);
-		$this->setInstagram($data['instagram']);
-	}
+        $this->setId($data['id']);
+        $this->setUsername($data['username']);
+        $this->setPassword($data['password']);
+        $this->setSurname($data['surname']);
+        $this->setName($data['name']);
+        $this->setAvatar($data['avatar']);
+        $this->setTwitter($data['twitter']);
+        $this->setFacebook($data['facebook']);
+        $this->setInstagram($data['instagram']);
+    }
 
     /**
-     * @return mixed
+     * @return  int
      */
     public function getId()
     {
@@ -35,7 +69,7 @@ class User
     }
 
     /**
-     * @param mixed $id
+     * @param  int $id
      *
      * @return self
      */
@@ -47,7 +81,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return  string
      */
     public function getUsername()
     {
@@ -55,7 +89,7 @@ class User
     }
 
     /**
-     * @param mixed $username
+     * @param  string $username
      *
      * @return self
      */
@@ -67,7 +101,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return  string
      */
     public function getPassword()
     {
@@ -75,7 +109,7 @@ class User
     }
 
     /**
-     * @param mixed $password
+     * @param  string $password
      *
      * @return self
      */
@@ -87,7 +121,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return  string
      */
     public function getSurname()
     {
@@ -95,7 +129,7 @@ class User
     }
 
     /**
-     * @param mixed $surname
+     * @param  string $surname
      *
      * @return self
      */
@@ -107,7 +141,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return  string
      */
     public function getName()
     {
@@ -115,7 +149,7 @@ class User
     }
 
     /**
-     * @param mixed $name
+     * @param  string $name
      *
      * @return self
      */
@@ -127,7 +161,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return  string
      */
     public function getAvatar()
     {
@@ -135,7 +169,7 @@ class User
     }
 
     /**
-     * @param mixed $avatar
+     * @param  string $avatar
      *
      * @return self
      */
@@ -145,9 +179,9 @@ class User
 
         return $this;
     }
-    
+
     /**
-     * @return mixed
+     * @return  string
      */
     public function getTwitter()
     {
@@ -155,7 +189,7 @@ class User
     }
 
     /**
-     * @param mixed $twitter
+     * @param  string $twitter
      *
      * @return self
      */
@@ -166,8 +200,8 @@ class User
         return $this;
     }
 
-     /**
-     * @return mixed
+    /**
+     * @return  string
      */
     public function getFacebook()
     {
@@ -175,7 +209,7 @@ class User
     }
 
     /**
-     * @param mixed $facebook
+     * @param  string $facebook
      *
      * @return self
      */
@@ -186,8 +220,8 @@ class User
         return $this;
     }
 
-     /**
-     * @return mixed
+    /**
+     * @return  string
      */
     public function getInstagram()
     {
@@ -195,7 +229,7 @@ class User
     }
 
     /**
-     * @param mixed $instagram
+     * @param  string $instagram
      *
      * @return self
      */

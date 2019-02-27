@@ -13,12 +13,12 @@ class Pager {
 		$(window).keyup((e) => {
 			switch (e.key) {
 				case 'ArrowLeft':
-					e.preventDefault();
-					_this.prev();
-					break;
+				e.preventDefault();
+				_this.prev();
+				break;
 				case 'ArrowRight':
-					e.preventDefault();
-					_this.next();
+				e.preventDefault();
+				_this.next();
 			}
 		});
 	}
