@@ -3,22 +3,22 @@ $title = 'Edition | '. $article->getTitle();
 ob_start();
 ?>
 <div class="row no-gutters">
-	<div class="col-8">
-		<h1 class="admin-section-title mt-5 mx-3">Editer un article</h1>
+	<div class="col-12 col-lg-8">
+		<h1 class="admin-section-title mt-3 mt-lg-5 mx-3">Editer un article</h1>
 		<hr class="mx-3 my-0"/>
 		<div class="row no-gutters">
-			<form method="post" class="article-form ml-3" action="admin/editArticle/<?= $_GET['id'] ?>">
+			<form method="post" class="article-form ml-3 mr-3 mr-lg-0 ml-lg-3" action="admin/editArticle/<?= $_GET['id'] ?>">
 				<div class="input-group mb-3 mt-3">
 					<span class="input-group-text">Titre</span>
 					<input type="text" class="form-control" name="title" value="<?= $article->getTitle() ?>" required>
 				</div>
-				<textarea class="ml-3" id="tinymce" name="content"><?= $article->getContent() ?></textarea><br />
+				<textarea class="ml-lg-3" id="tinymce" name="content"><?= $article->getContent() ?></textarea><br />
 				<div class="text-right">
 					<button type="submit" class="btn btn-dark">Editer</button>
 				</div>
 			</div>
 		</div>
-		<aside class="col-4 pl-5">
+		<aside class="d-none d-lg-block col-4 pl-5">
 			<h1 class="admin-section-title mt-5 mx-3">Statut de l'article</h1>
 			<hr class="mx-3 my-0"/>
 			<div class="row mx-2 mt-3 pr-3">

@@ -11,22 +11,20 @@ namespace Controller;
 class Backend extends Common
 {
     /**
-    * Determine if is user is trying to log in or not.
-    *
-    * If so, calls for UserManager login method, else sends user to login screen.
-    */
+     * Determine if is user is trying to log in or not.
+     *
+     * If so, calls for UserManager login method, else sends user to login screen.
+     */
     public function login()
     {
-        if  ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $login = $this->userManager->login();
             if ($login) {
                 $this->adminHome();
-            }
-            else {
+            } else {
                 require_once './view/backend/loginView.php';
             }
-        }
-        else {
+        } else {
             require_once './view/backend/loginView.php';
         }
     }
@@ -52,9 +50,9 @@ class Backend extends Common
     }
     /**
      * Checks if article has been posted.
-     * 
+     *
      * If so, Article Manager add method is called and user is sent to Success page.
-     * 
+     *
      * Else, user is sent to Add Article page.
      */
     public function addArticle()
@@ -62,8 +60,7 @@ class Backend extends Common
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->articleManager->add();
             $this->successManager->success('articleAdded');
-        }
-        else {
+        } else {
             require_once './view/backend/addArticleView.php';
         }
     }
@@ -79,8 +76,7 @@ class Backend extends Common
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->articleManager->edit();
             $this->successManager->success('articleEdited');
-        }
-        else {
+        } else {
             $article = $this->articleManager->getArticle($_GET['id']);
             require_once './view/backend/editArticleView.php';
         }
@@ -136,8 +132,7 @@ class Backend extends Common
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->userManager->editProfile();
             $this->successManager->success('profileEdited');
-        }
-        else {
+        } else {
             $user = $this->userManager->getProfile();
             require_once './view/backend/editProfileView.php';
         }

@@ -21,7 +21,7 @@ class Manager
 
     /**
      * Executes a prepared request for a single variable parameter
-     * 
+     *
      * @param  string $request the request to prepare
      * @param  mixed $variable the single value for the prepared request
      * @return  bool
@@ -35,7 +35,7 @@ class Manager
     }
     /**
      * Executes a prepared request for an array of variable parameters
-     * 
+     *
      * @param  string $request the request to prepare
      * @param  array $array an array of values for the prepared request
      * @return  object
@@ -49,7 +49,7 @@ class Manager
     }
     /**
      * Executes a prepared request without variable parameters
-     * 
+     *
      * @param  string $request the request to prepare and execute
      * @return  object
      */

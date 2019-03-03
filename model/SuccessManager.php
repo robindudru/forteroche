@@ -17,7 +17,7 @@ class SuccessManager
 
     /**
      * Gets information to hydrate Success and sends to Success page.
-     * 
+     *
      * @param  string $type the type of success wanted
      */
     public function success($type)
@@ -29,7 +29,7 @@ class SuccessManager
 
     /**
      * Sets message depending on the situation
-     * 
+     *
      * @param  string $type the type of success wanted
      */
     public function setMessage($type)

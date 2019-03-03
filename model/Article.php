@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Model for Article, hydrated from data gathered from Article Manager.
  *
@@ -52,7 +52,7 @@ class Article
         $this->setDate($data['date']);
         $this->setUpdated($data['updated']);
         $commentManager = new CommentManager();
-        $totalComments = $commentManager->totalComments($this->getId()); 
+        $totalComments = $commentManager->totalComments($this->getId());
         $this->setTotalComments($totalComments);
     }
 

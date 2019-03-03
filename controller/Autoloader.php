@@ -9,8 +9,8 @@
 class Autoloader
 {
     /**
-    * Registers every classes gathered from autoload method
-    */
+     * Registers every classes gathered from autoload method
+     */
     public static function register()
     {
         spl_autoload_register(array(__CLASS__, 'autoload'));

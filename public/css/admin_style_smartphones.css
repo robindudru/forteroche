@@ -1,0 +1,179 @@
+/*###############
+#####General#####
+###############*/
+
+body, html {
+	height:100%;
+	width:100%;
+	overflow-x: hidden;
+}
+
+@font-face {
+	font-family: 'ostrich_sansmedium';
+	src: url('../assets/fonts/ostrich-regular-webfont.woff2') format('woff2'),
+	url('../assets/fonts/ostrich-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'vinchandregular';
+	src: url('../assets/fonts/vinchand-webfont.woff2') format('woff2'),
+	url('../assets/fonts/vinchand-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.content-wrapper{
+	height:calc(100% - 8vh);
+}
+
+.relative {
+	position: relative;
+}
+
+.float-left {
+	float:left;
+}
+
+.float-right {
+	float:right;
+}
+
+.left-page {
+}
+
+.right-page {
+	border-left: 1px solid lightgrey;
+}
+
+.top-header {
+	width: 85%!important;
+	margin: 0 auto!important;
+}
+
+.top-header h1 {
+	margin:.8vw!important;
+	width: 100%!important;
+	text-align: center!important;
+	font-family: 'ostrich_sansmedium', Arial!important;
+	font-size: 1vw!important;
+}
+
+.neutral-xl-title {
+	font-family: Arial Black;
+	font-size: 1.8vw;
+}
+
+.neutral-md-title {
+	font-family: Arial Black;
+	font-size: 1.2vw;
+}
+
+.small {
+	font-size: .8vw;
+}
+
+a, a:visited, a:active, a:link {
+	color:black;
+	transition: all .5s ease;
+}
+
+a:hover {
+	text-decoration: none;
+	color:grey;
+}
+
+aside .card-header {
+	font-weight: bold!important;
+}
+
+/*#################
+#####Admin Main####
+#######Template####
+#################*/
+
+#admin-nav {
+	color: white;
+	height:8vh;
+	background-color: #262626;
+}
+
+#admin-nav img {
+	height: 5vh;
+}
+
+#admin-links a {
+	font-size: 4vw!important;
+}
+
+#admin-nav a {
+	font-family: 'ostrich_sansmedium', Arial;
+	color:white;
+	font-size: 3vw;
+}
+
+.username {
+	font-weight: bold;
+	font-size: 3vw;
+}
+
+/*#################
+#####Main Page#####
+#######Backend#####
+#################*/
+
+.admin-section-title {
+	font-family: 'ostrich_sansmedium', Arial;
+	font-size:6vw;
+}
+
+.admin-card-title {
+	font-family: 'ostrich_sansmedium', Arial;
+	font-size: 6vw;
+}
+
+.card-subtitle i {
+	font-size: 4vw;
+}
+
+.card-body p {
+	font-size: 3vw;
+}
+
+#login-form {
+	width:70%;
+	margin: 0 auto;
+	font-size:3vw;
+}
+
+#login-form .input-group-text, #login-form input {
+	font-size: 3vw!important;
+	height: 4vh;
+}
+
+#login-form button {
+	margin:0 auto;
+	font-size: 3vw;
+}
+
+.article-form {
+	width:100%;
+}
+
+#tinymce {
+	height:60vh;
+}
+
+.admin-modal {
+	top:10%;
+}
+
+#published, #draft, #trash {
+	font-size: 3vw;
+	padding: .5vw;
+}
+
+.profile-modal {
+	position:relative;
+}

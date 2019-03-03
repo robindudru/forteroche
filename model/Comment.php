@@ -11,32 +11,32 @@ namespace Model;
 class Comment
 {
     /**
-    * @var int
-    */
+     * @var int
+     */
     private $id;
     /**
-    * @var  string
-    */
+     * @var  string
+     */
     private $author;
     /**
-    * @var  string
-    */
+     * @var  string
+     */
     private $content;
     /**
-    * @var  string
-    */
+     * @var  string
+     */
     private $date;
     /**
-    * @var  int
-    */
+     * @var  int
+     */
     private $articleId;
     /**
-    * @var  string
-    */
+     * @var  string
+     */
     private $articleTitle;
     /**
-    * @var  int
-    */
+     * @var  int
+     */
     private $signaled;
 
     public function __construct(array $data)

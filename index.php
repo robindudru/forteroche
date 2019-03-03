@@ -19,86 +19,73 @@ try {
             if (isset($_SESSION['username'])) {
                 if ($_SESSION['role'] === 'admin') {
                     if (isset($_GET['action'])) {
-                        switch($_GET['action']) {
+                        switch ($_GET['action']) {
                             case 'addArticle':
-                            $backController->addArticle();
-                            break;
+                                $backController->addArticle();
+                                break;
                             case 'editArticle':
-                            $backController->editArticle();
-                            break;
+                                $backController->editArticle();
+                                break;
                             case 'trashArticle':
-                            $backController->trashArticle();
-                            break;
+                                $backController->trashArticle();
+                                break;
                             case 'deleteArticle':
-                            $backController->deleteArticle();
-                            break;
+                                $backController->deleteArticle();
+                                break;
                             case 'login':
-                            $backController->login();
-                            break;
+                                $backController->login();
+                                break;
                             case 'disconnect':
-                            $backController->disconnect();
-                            break;
+                                $backController->disconnect();
+                                break;
                             case 'approveComment':
-                            $backController->approveComment();
-                            break;
+                                $backController->approveComment();
+                                break;
                             case 'deleteComment':
-                            $backController->deleteComment();
-                            break;
+                                $backController->deleteComment();
+                                break;
                             case 'editProfile':
-                            $backController->editProfile();
-                            break;
+                                $backController->editProfile();
+                                break;
                             default:
-                            throw new \Exception('Action inconnue');
+                                throw new \Exception('Action inconnue');
                         }
-                    }
-                    else if (isset($_GET['confirm'])) {
+                    } else if (isset($_GET['confirm'])) {
                         $backController->confirm();
+                    } else {
+                        $backController->adminHome();
                     }
-                    else {
-                        $backController->adminHome();   
-                    }
-                }
-                else {
+                } else {
                     throw new \Exception('Vous n\'êtes pas administrateur !');
                 }
-            }
-            else {
+            } else {
                 $backController->login();
             }
-        }
-        else {
+        } else {
             throw new \Exception('Mode inconnu');
         }
-    }
-    else if (isset($_GET['action'])) {
-        if (isset ($_COOKIE['enter'])) {
+    } else if (isset($_GET['action'])) {
+        if (isset($_COOKIE['enter'])) {
             if ($_GET['action'] === 'home') {
                 $frontController->frontPage();
-            }
-            else if ($_GET['action'] === 'article') {
+            } else if ($_GET['action'] === 'article') {
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     $frontController->article();
-                }
-                else {
-                    throw new \Exception ('L\'identifiant ne peut pas être négatif.');
+                } else {
+                    throw new \Exception('L\'identifiant ne peut pas être négatif.');
                 }
             }
-        }
-        else {
+        } else {
             $frontController->splashScreen();
         }
-    }
-    else {
+    } else {
         if (isset($_COOKIE['enter'])) {
             $frontController->frontPage();
-        }
-        else {
+        } else {
             $frontController->splashScreen();
         }
     }
-}
-
-catch(Exception $e) {
-    $errorMessage =  $e->getMessage();
-    require_once('view/frontend/errorView.php');
+} catch (Exception $e) {
+    $errorMessage = $e->getMessage();
+    require_once 'view/frontend/errorView.php';
 }

@@ -20,10 +20,9 @@ class Frontend extends Common
     public function splashScreen()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['enter'] === 'enter') {
-            setCookie('enter', 'enter', time() + 7*24*3600, null, null, false, true);
+            setCookie('enter', 'enter', time() + 7 * 24 * 3600, null, null, false, true);
             header('Location:home');
-        }
-        else {
+        } else {
             require_once './view/frontend/splashView.php';
         }
     }
@@ -48,14 +47,12 @@ class Frontend extends Common
     public function article()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		    $this->commentManager->add();
-		    $this->successManager->success('commentAdded');
-        }
-        else if (isset($_GET['signal'])) {
+            $this->commentManager->add();
+            $this->successManager->success('commentAdded');
+        } else if (isset($_GET['signal'])) {
             $this->commentManager->signalComment($_GET['signal']);
             $this->successManager->success('commentSignaled');
-        }
-        else {
+        } else {
             $articles = $this->articleManager->getArticles('published');
             $article = $this->articleManager->getArticle($_GET['id']);
             $nextArticle = $this->articleManager->getNextArticle($_GET['id']);

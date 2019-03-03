@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Managing actions to perform regarding Users requested by controllers.
  *
@@ -16,8 +16,8 @@ class UserManager extends Manager
      */
     public function login()
     {
-        $username = StringManager::normalize((string)$_POST['username']);
-        $password = StringManager::normalize((string)$_POST['password']);
+        $username = StringManager::normalize((string) $_POST['username']);
+        $password = StringManager::normalize((string) $_POST['password']);
         $req = $this->reqSinglePrepare('SELECT * FROM users WHERE username = ?', $username);
         $data = $req->fetch();
         if (!empty($data)) {
@@ -28,12 +28,10 @@ class UserManager extends Manager
                 $_SESSION['avatar'] = $data['avatar'];
                 $_SESSION['role'] = $data['role'];
                 return true;
+            } else {
+                throw new \Exception('Mot de passe incorrect.');
             }
-            else {
-                throw new \Exception('Mot de passe incorrect.'); 
-            }
-        }
-        else {
+        } else {
             throw new \Exception('Cet utilisateur n\'existe pas.');
         }
     }
@@ -48,8 +46,7 @@ class UserManager extends Manager
         if (!empty($data)) {
             $user = new User($data);
             return $user;
-        }
-        else {
+        } else {
             throw new \Exception('Impossible de récupérer les données utilisateur.');
         }
     }
@@ -61,11 +58,10 @@ class UserManager extends Manager
     {
         $req = $this->reqExec("SELECT * FROM users WHERE role = 'admin'");
         $data = $req->fetch();
-        if(!empty($data)) {
+        if (!empty($data)) {
             $user = new User($data);
             return $user;
-        }
-        else {
+        } else {
             throw new \Exception('Impossible de trouver les infos de l\'administrateur.');
         }
     }
@@ -76,24 +72,23 @@ class UserManager extends Manager
      */
     public function editProfile()
     {
-        $id = (int)$_POST['id'];
-        $username = StringManager::normalize((string)$_POST['username']);
-        $surname = trim((string)$_POST['surname']);
-        $name = trim((string)$_POST['name']);
+        $id = (int) $_POST['id'];
+        $username = StringManager::normalize((string) $_POST['username']);
+        $surname = trim((string) $_POST['surname']);
+        $name = trim((string) $_POST['name']);
         if (!empty($_POST['password'])) {
-            $password = StringManager::normalize((string)$_POST['password']);
-            $passwordConfirm = StringManager::normalize((string)$_POST['passwordConfirm']);
+            $password = StringManager::normalize((string) $_POST['password']);
+            $passwordConfirm = StringManager::normalize((string) $_POST['passwordConfirm']);
         }
-        $twitter = StringManager::normalize((string)$_POST['twitter']);
-        $facebook = StringManager::normalize((string)$_POST['facebook']);
-        $instagram = StringManager::normalize((string)$_POST['instagram']);
+        $twitter = StringManager::normalize((string) $_POST['twitter']);
+        $facebook = StringManager::normalize((string) $_POST['facebook']);
+        $instagram = StringManager::normalize((string) $_POST['instagram']);
 
         if (!empty($username) && !empty($surname) && !empty($name)) {
             if (isset($password)) {
-                if($password != $passwordConfirm) {
+                if ($password != $passwordConfirm) {
                     throw new \Exception('Les mots de passe ne concordent pas.');
-                }
-                else {
+                } else {
                     $password = password_hash($password, PASSWORD_DEFAULT);
                     $values = [
                         'id' => $id,
@@ -103,12 +98,11 @@ class UserManager extends Manager
                         'name' => $name,
                         'instagram' => $instagram,
                         'twitter' => $twitter,
-                        'facebook' => $facebook
+                        'facebook' => $facebook,
                     ];
-                    $req =  $this->reqArrayPrepare('UPDATE users SET username=:username, password=:password, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id', $values);
+                    $req = $this->reqArrayPrepare('UPDATE users SET username=:username, password=:password, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id', $values);
                 }
-            }
-            else {
+            } else {
                 $values = [
                     'id' => $id,
                     'username' => $username,
@@ -116,18 +110,16 @@ class UserManager extends Manager
                     'name' => $name,
                     'instagram' => $instagram,
                     'twitter' => $twitter,
-                    'facebook' => $facebook
+                    'facebook' => $facebook,
                 ];
                 $req = $this->reqArrayPrepare('UPDATE users SET username=:username, surname=:surname, name=:name, instagram=:instagram, twitter=:twitter, facebook=:facebook WHERE id=:id', $values);
             }
-        }
-        else {
+        } else {
             throw new \Exception('Au moins un des champs obligatoires est vide.');
         }
         if (!$req) {
             throw new \Exception('Erreur lors de la mise à jour du profil');
-        }
-        else {
+        } else {
             $_SESSION['username'] = $username;
             $_SESSION['surname'] = $surname;
             $_SESSION['name'] = $name;

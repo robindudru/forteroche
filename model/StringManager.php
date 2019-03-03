@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Formats strings.
  *
@@ -44,16 +44,16 @@ class StringManager
         '/–/' => '-',
         '/[‘’‚‹›]/u' => ' ',
         '/[“”«»„]/u' => ' ',
-        '/ /' => ' '
+        '/ /' => ' ',
     );
 
     /**
      * Replaces accented characters for unaccentend ones, lowercases string and gets rid of any blank spaces
-     * 
+     *
      * @param  string $string string to format
      * @return  string formatted string
      */
-    public static function normalize($string)
+    static function normalize($string)
     {
         $str = preg_replace(array_keys(self::UTF8), array_values(self::UTF8), $string);
         $str = strtolower(str_replace(' ', '', $str));
@@ -62,23 +62,23 @@ class StringManager
 
     /**
      * Lowercases string and replaces blank spaces for dashes
-     * 
+     *
      * @param  string $string string to format
      * @return  string formatted string
      */
-    public static function slug($string)
+    static function slug($string)
     {
-      $str = strtolower(str_replace(' ', '-', $string));
-      return $str;
+        $str = strtolower(str_replace(' ', '-', $string));
+        return $str;
     }
 
     /**
      * Replaces accented characters for unaccented ones
-     * 
+     *
      * @param  string $string string to format
      * @return  string formatted string
      */
-    public static function noAccents($string)
+    static function noAccents($string)
     {
         $str = preg_replace(array_keys(self::UTF8), array_values(self::UTF8), $string);
         return $str;

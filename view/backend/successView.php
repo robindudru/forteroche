@@ -4,7 +4,7 @@ ob_start();
 ?>
 
 <div class="row no-gutters h-100 d-flex justify-content-center">
-	<div class="col-6 relative">
+	<div class="col-10 col-lg-6 relative">
 		<div class="card admin-modal">
 			<div class="card-header m-0 d-flex justify-content-between">
 				<span class="admin-card-title">
