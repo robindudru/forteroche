@@ -95,8 +95,9 @@ class ArticleManager extends Manager
                 'title' => StringManager::noAccents(trim((string) $_POST['title'])),
                 'content' => $_POST['content'],
                 'status' => $_POST['status'],
+                'now' => date("Y-m-d H:i:s")
             ];
-            $req = $this->reqArrayPrepare('INSERT INTO articles (title, content, status) VALUES (:title, :content, :status)', $values);
+            $req = $this->reqArrayPrepare('INSERT INTO articles (title, content, status, date, updated) VALUES (:title, :content, :status, :now, :now)', $values);
             if (!$req) {
                 throw new \Exception('Erreur lors de l\'ajout de l\'article');
             }

@@ -73,7 +73,7 @@ ob_start();
 									</a>
 								</span>
 								<span class="card-subtitle text-muted small">
-									<a href="admin/editArticle/=<?= $article->getId() ?>" title="Editer">
+									<a href="admin/editArticle/<?= $article->getId() ?>" title="Editer">
 										<i class="fas fa-edit mr-1"></i>
 									</a>
 									<a href="admin/trashArticle-<?= $article->getId() ?>" title="Mettre à la corbeille">

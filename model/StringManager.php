@@ -69,6 +69,11 @@ class StringManager
     static function slug($string)
     {
         $str = strtolower(str_replace(' ', '-', $string));
+        $str = str_replace('?', '', $str);
+        $str = str_replace("'", '', $str);
+        $str = str_replace('"', '', $str);
+        $str = str_replace('!', '', $str);
+        $str = str_replace('/', '', $str);
         return $str;
     }
 
