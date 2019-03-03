@@ -13,7 +13,7 @@ ob_start(); ?>
 				$totalComments = $article->getTotalComments();
 				?>
 				<div style="width:100%;">
-					<div class=float-left">
+					<div class="float-left mt-3 mt-md-0">
 						<h2><a href="article--<?= Model\StringManager::slug($articleTitle) ?>-<?= $articleId ?>"><?= $articleTitle ?></a></h2>
 					</div>
 					<div class="float-right mt-2 ml-2">
